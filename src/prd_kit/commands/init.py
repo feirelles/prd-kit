@@ -6,6 +6,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
+import typer
 from rich.console import Console
 
 console = Console()
@@ -13,6 +14,19 @@ console = Console()
 # Paths relative to the package
 PACKAGE_DIR = Path(__file__).parent.parent
 TEMPLATES_DIR = PACKAGE_DIR / "templates"
+
+# PRD Kit ASCII Art
+PRD_KIT_BANNER = """
+[bold cyan]
+██████╗ ██████╗ ██████╗     ██╗  ██╗██╗████████╗
+██╔══██╗██╔══██╗██╔══██╗    ██║ ██╔╝██║╚══██╔══╝
+██████╔╝██████╔╝██║  ██║    █████╔╝ ██║   ██║   
+██╔═══╝ ██╔══██╗██║  ██║    ██╔═██╗ ██║   ██║   
+██║     ██║  ██║██████╔╝    ██║  ██╗██║   ██║   
+╚═╝     ╚═╝  ╚═╝╚═════╝     ╚═╝  ╚═╝╚═╝   ╚═╝   
+[/bold cyan]
+[dim]  Product Requirements Document Generation with AI[/dim]
+"""
 
 
 def detect_shell() -> str:
@@ -39,6 +53,9 @@ def init_command(
     """Initialize a new PRD Kit project."""
     target = Path(path).resolve()
 
+    # Print banner
+    console.print(PRD_KIT_BANNER)
+
     # Validate AI option
     supported_ai = ["copilot", "claude"]
     if ai not in supported_ai:
@@ -59,10 +76,15 @@ def init_command(
         contents = list(target.iterdir())
         # Filter out hidden files for emptiness check
         visible_contents = [c for c in contents if not c.name.startswith(".")]
-        if visible_contents and not force:
-            console.print(f"[red]Error:[/red] Directory is not empty: {target}")
-            console.print("Use --force to initialize anyway")
-            raise SystemExit(1)
+        if visible_contents:
+            if not force:
+                # Prompt user for confirmation
+                console.print(f"\n[yellow]Warning:[/yellow] Current directory is not empty ({len(visible_contents)} items)")
+                console.print("Template files will be merged with existing content and may overwrite existing files")
+                
+                if not typer.confirm("Do you want to continue?", default=False):
+                    console.print("[dim]Initialization cancelled[/dim]")
+                    raise SystemExit(0)
     else:
         target.mkdir(parents=True, exist_ok=True)
 
