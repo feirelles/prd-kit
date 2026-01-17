@@ -275,7 +275,7 @@ def _generate_readme() -> str:
     """Generate README.md content."""
     return """# PRD Kit Project
 
-This project uses [PRD Kit](https://github.com/your-org/prd-kit) for Product Requirements Document generation with AI agents.
+This project uses [PRD Kit](https://github.com/feirelles/prd-kit) for Product Requirements Document generation with AI agents.
 
 ## Getting Started
 
