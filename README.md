@@ -17,7 +17,7 @@ Choose your preferred installation method:
 Install once and use everywhere:
 
 ```bash
-uv tool install prd-cli --from git+https://github.com/feirelles/prd-kit.git
+uv tool install prd-kit --from git+https://github.com/feirelles/prd-kit.git
 ```
 
 Then use the `prd` command anywhere:
