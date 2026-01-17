@@ -6,20 +6,22 @@ Product Requirements Document generation with AI agents.
 
 PRD Kit is a system for generating structured Product Requirements Documents (PRDs) using AI agents. It serves as the precursor to [GitHub Spec Kit](https://github.com/github/spec-kit), transforming product ideas into technical deliverables that can be used to initialize specs.
 
+**Repository**: [github.com/feirelles/prd-kit](https://github.com/feirelles/prd-kit)
+
 ## Installation
 
 ### Quick Start (uvx)
 
 ```bash
 # Run directly without installation
-uvx --from git+https://github.com/your-org/prd-kit.git prd init my-project --ai copilot
+uvx --from git+https://github.com/feirelles/prd-kit.git prd init my-project --ai copilot
 ```
 
 ### Local Development
 
 ```bash
 # Clone and install locally
-git clone https://github.com/your-org/prd-kit.git
+git clone https://github.com/feirelles/prd-kit.git
 cd prd-kit
 uv venv
 source .venv/bin/activate
