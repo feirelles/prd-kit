@@ -10,14 +10,32 @@ PRD Kit is a system for generating structured Product Requirements Documents (PR
 
 ## Installation
 
-### Quick Start (uvx)
+Choose your preferred installation method:
+
+### Option 1: Persistent Installation (Recommended)
+
+Install once and use everywhere:
 
 ```bash
-# Run directly without installation
+uv tool install prd-cli --from git+https://github.com/feirelles/prd-kit.git
+```
+
+Then use the `prd` command anywhere:
+
+```bash
+prd init my-project --ai copilot
+prd version
+```
+
+### Option 2: One-Time Use (uvx)
+
+Run directly without installation:
+
+```bash
 uvx --from git+https://github.com/feirelles/prd-kit.git prd init my-project --ai copilot
 ```
 
-### Local Development
+### Option 3: Local Development
 
 ```bash
 # Clone and install locally
