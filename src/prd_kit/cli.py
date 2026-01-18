@@ -4,6 +4,7 @@ import typer
 from rich.console import Console
 
 from prd_kit.commands.init import init_command
+from prd_kit.commands.update import update_command
 from prd_kit.commands.version import version_command
 
 app = typer.Typer(
@@ -60,7 +61,26 @@ def init(
         no_git=no_git,
     )
 
+update")
+def update(
+    ai: str = typer.Option(
+        None,
+        "--ai",
+        "-a",
+        help="AI agent to update: copilot, claude. Auto-detected if not specified.",
+    ),
+    script: str = typer.Option(
+        None,
+        "--script",
+        "-s",
+        help="Script type: sh (bash) or ps (powershell). Auto-detected if not specified.",
+    ),
+) -> None:
+    """Update PRD Kit templates and agents in current project."""
+    update_command(ai=ai, script=script)
 
+
+@app.command("
 @app.command("version")
 def version() -> None:
     """Show PRD Kit version."""

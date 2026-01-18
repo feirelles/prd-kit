@@ -67,6 +67,26 @@ Options:
 - `--force` - Force init in non-empty directory
 - `--no-git` - Skip git initialization
 
+### Update an Existing Project
+
+To update templates, agents, and scripts in an existing project to the latest version:
+
+```bash
+cd my-project
+prd update
+```
+
+This preserves your PRDs and product-constitution.md while updating:
+- Templates (prd-template.md, deliverable-template.md, etc.)
+- Command definitions
+- Agent files
+- Setup scripts
+- Validators
+
+Options:
+- `--ai copilot|claude` - Override AI agent type (auto-detected by default)
+- `--script sh|ps` - Override script type (auto-detected by default)
+
 ### Workflow
 
 After initialization, interact with the AI agents:
