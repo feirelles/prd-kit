@@ -27,6 +27,12 @@ prd init my-project --ai copilot
 prd version
 ```
 
+To update to the latest version:
+
+```bash
+uv tool install --force prd-kit --from git+https://github.com/feirelles/prd-kit.git
+```
+
 ### Option 2: One-Time Use (uvx)
 
 Run directly without installation:
