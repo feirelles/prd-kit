@@ -81,7 +81,6 @@ def update(
     update_command(ai=ai, script=script)
 
 
-@app.command("
 @app.command("version")
 def version() -> None:
     """Show PRD Kit version."""
