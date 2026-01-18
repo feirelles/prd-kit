@@ -175,6 +175,9 @@ def _copy_templates(target: Path, ai: str, script: str) -> None:
             "scripts/bash/common.sh": prd_kit_dir / "scripts" / "bash" / "common.sh",
         },
         "ps": {
+            "scripts/powershell/setup-constitution.ps1": (
+                prd_kit_dir / "scripts" / "powershell" / "setup-constitution.ps1"
+            ),
             "scripts/powershell/setup-discover.ps1": (
                 prd_kit_dir / "scripts" / "powershell" / "setup-discover.ps1"
             ),

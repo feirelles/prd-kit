@@ -5,6 +5,13 @@ handoffs:
   - label: Start New Feature
     agent: prd-discover
     prompt: Start discovery for another feature
+  - label: Implement First Deliverable
+    agent: speckit.specify
+    prompt: |
+      Find and read the deliverable file starting with 'deliverable-001-' in the prds/[current-feature]/deliverables/ directory.
+      Extract all content from these sections: Context, User Stories, Technical Requirements, Acceptance Criteria, and Integration Points.
+      Use the deliverable title (after "# Deliverable:") as the feature name.
+      Create a spec using all the extracted information - this deliverable is a self-contained feature ready for implementation.
 ---
 
 # PRD Deliverables Agent
