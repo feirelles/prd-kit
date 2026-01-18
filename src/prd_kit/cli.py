@@ -61,7 +61,8 @@ def init(
         no_git=no_git,
     )
 
-update")
+
+@app.command("update")
 def update(
     ai: str = typer.Option(
         None,
