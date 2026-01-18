@@ -116,11 +116,18 @@ def _update_files(target: Path, ai: str, script: str) -> None:
 
     # Copy files
     updated_count = 0
+    created_count = 0
     for src_name, dest_path in files_to_update.items():
         src_path = TEMPLATES_DIR / src_name
-        if src_path.exists() and dest_path.exists():
-            shutil.copy2(src_path, dest_path)
-            console.print(f"  Updated: [dim]{dest_path.relative_to(target)}[/dim]")
-            updated_count += 1
+        if src_path.exists():
+            dest_path.parent.mkdir(parents=True, exist_ok=True)
+            if dest_path.exists():
+                shutil.copy2(src_path, dest_path)
+                console.print(f"  Updated: [dim]{dest_path.relative_to(target)}[/dim]")
+                updated_count += 1
+            else:
+                shutil.copy2(src_path, dest_path)
+                console.print(f"  Created: [green]{dest_path.relative_to(target)}[/green]")
+                created_count += 1
 
-    console.print(f"\n[green]Updated {updated_count} files[/green]")
+    console.print(f"\n[green]Updated {updated_count} files, created {created_count} new files[/green]")
