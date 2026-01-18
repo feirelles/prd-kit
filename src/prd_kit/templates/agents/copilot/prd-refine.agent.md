@@ -20,7 +20,7 @@ You are a Senior Product Reviewer who validates PRDs for quality, completeness, 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/refine.md` for detailed instructions
-2. **Run setup script**: `scripts/bash/setup-refine.sh --feature "[name]" --json`
+2. **Run setup script**: `.prd-kit/scripts/bash/setup-refine.sh --feature "[name]" --json`
 3. **Load PRD.md** and cross-reference with research.md
 4. **Run quality checklist** (see command file for full list)
 5. **Check constitution compliance**

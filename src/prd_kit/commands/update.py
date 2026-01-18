@@ -82,13 +82,13 @@ def _update_files(target: Path, ai: str, script: str) -> None:
     # Scripts based on type
     if script == "sh":
         files_to_update.update({
-            "scripts/bash/common.sh": target / "scripts" / "bash" / "common.sh",
-            "scripts/bash/setup-constitution.sh": target / "scripts" / "bash" / "setup-constitution.sh",
-            "scripts/bash/setup-discover.sh": target / "scripts" / "bash" / "setup-discover.sh",
-            "scripts/bash/setup-draft.sh": target / "scripts" / "bash" / "setup-draft.sh",
-            "scripts/bash/setup-refine.sh": target / "scripts" / "bash" / "setup-refine.sh",
-            "scripts/bash/setup-decompose.sh": target / "scripts" / "bash" / "setup-decompose.sh",
-            "scripts/bash/setup-deliverables.sh": target / "scripts" / "bash" / "setup-deliverables.sh",
+            "scripts/bash/common.sh": prd_kit_dir / "scripts" / "bash" / "common.sh",
+            "scripts/bash/setup-constitution.sh": prd_kit_dir / "scripts" / "bash" / "setup-constitution.sh",
+            "scripts/bash/setup-discover.sh": prd_kit_dir / "scripts" / "bash" / "setup-discover.sh",
+            "scripts/bash/setup-draft.sh": prd_kit_dir / "scripts" / "bash" / "setup-draft.sh",
+            "scripts/bash/setup-refine.sh": prd_kit_dir / "scripts" / "bash" / "setup-refine.sh",
+            "scripts/bash/setup-decompose.sh": prd_kit_dir / "scripts" / "bash" / "setup-decompose.sh",
+            "scripts/bash/setup-deliverables.sh": prd_kit_dir / "scripts" / "bash" / "setup-deliverables.sh",
         })
 
     # Agents based on AI type

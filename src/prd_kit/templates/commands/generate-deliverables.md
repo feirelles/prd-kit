@@ -33,7 +33,7 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
 
 1. **Setup**: Run setup script:
    ```bash
-   scripts/bash/setup-deliverables.sh --feature "feature-name" --json
+   .prd-kit/scripts/bash/setup-deliverables.sh --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

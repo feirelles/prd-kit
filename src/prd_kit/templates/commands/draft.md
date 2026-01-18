@@ -33,7 +33,7 @@ Synthesize the research notes (`research.md`) into a structured PRD draft (`PRD.
 
 1. **Setup**: Run setup script to get file paths:
    ```bash
-   scripts/bash/setup-draft.sh --feature "feature-name" --json
+   .prd-kit/scripts/bash/setup-draft.sh --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

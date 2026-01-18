@@ -35,7 +35,7 @@ Transform a vague product idea into structured research notes (`research.md`) by
 
 **BEFORE starting discovery**, you MUST verify the constitution is complete:
 
-1. Run: `scripts/bash/setup-constitution.sh --json`
+1. Run: `.prd-kit/scripts/bash/setup-constitution.sh --json`
 2. Parse the JSON output and check the `STATUS` field
 3. **If STATUS is NOT "complete"**:
    - Output this message:
@@ -59,7 +59,7 @@ Transform a vague product idea into structured research notes (`research.md`) by
 
 1. **Setup**: Run `{SCRIPT}` with the feature name to create the feature directory and initial files.
    ```bash
-   scripts/bash/setup-discover.sh --feature "feature-name" --json
+   .prd-kit/scripts/bash/setup-discover.sh --feature "feature-name" --json
    ```
 
 2. **Load Constitution**: Read `.prd-kit/memory/product-constitution.md` to understand:

@@ -31,7 +31,7 @@ Create or complete the Product Constitution (`.prd-kit/memory/product-constituti
 
 1. **Setup**: Run setup script to get paths:
    ```bash
-   scripts/bash/setup-constitution.sh --json
+   .prd-kit/scripts/bash/setup-constitution.sh --json
    ```
 
 2. **Load Current State**: Read `.prd-kit/memory/product-constitution.md`

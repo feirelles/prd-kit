@@ -33,7 +33,7 @@ Analyze the approved PRD and decompose it into discrete technical deliverables (
 
 1. **Setup**: Run setup script:
    ```bash
-   scripts/bash/setup-decompose.sh --feature "feature-name" --json
+   .prd-kit/scripts/bash/setup-decompose.sh --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

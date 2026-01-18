@@ -31,7 +31,7 @@ Validate the PRD draft against quality criteria and constitution, resolve any re
 
 1. **Setup**: Run setup script:
    ```bash
-   scripts/bash/setup-refine.sh --feature "feature-name" --json
+   .prd-kit/scripts/bash/setup-refine.sh --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

@@ -115,9 +115,9 @@ def _create_directory_structure(target: Path, ai: str, script: str) -> None:
         prd_kit_dir / "templates",
         prd_kit_dir / "commands",
         prd_kit_dir / "validators",
+        prd_kit_dir / "scripts" / "bash",
+        prd_kit_dir / "scripts" / "powershell",
         target / "prds",
-        target / "scripts" / "bash",
-        target / "scripts" / "powershell",
     ]
 
     # AI-specific directories
@@ -164,33 +164,33 @@ def _copy_templates(target: Path, ai: str, script: str) -> None:
     # Scripts based on selected type
     script_templates = {
         "sh": {
-            "scripts/bash/setup-constitution.sh": target / "scripts" / "bash" / "setup-constitution.sh",
-            "scripts/bash/setup-discover.sh": target / "scripts" / "bash" / "setup-discover.sh",
-            "scripts/bash/setup-draft.sh": target / "scripts" / "bash" / "setup-draft.sh",
-            "scripts/bash/setup-refine.sh": target / "scripts" / "bash" / "setup-refine.sh",
-            "scripts/bash/setup-decompose.sh": target / "scripts" / "bash" / "setup-decompose.sh",
+            "scripts/bash/setup-constitution.sh": prd_kit_dir / "scripts" / "bash" / "setup-constitution.sh",
+            "scripts/bash/setup-discover.sh": prd_kit_dir / "scripts" / "bash" / "setup-discover.sh",
+            "scripts/bash/setup-draft.sh": prd_kit_dir / "scripts" / "bash" / "setup-draft.sh",
+            "scripts/bash/setup-refine.sh": prd_kit_dir / "scripts" / "bash" / "setup-refine.sh",
+            "scripts/bash/setup-decompose.sh": prd_kit_dir / "scripts" / "bash" / "setup-decompose.sh",
             "scripts/bash/setup-deliverables.sh": (
-                target / "scripts" / "bash" / "setup-deliverables.sh"
+                prd_kit_dir / "scripts" / "bash" / "setup-deliverables.sh"
             ),
-            "scripts/bash/common.sh": target / "scripts" / "bash" / "common.sh",
+            "scripts/bash/common.sh": prd_kit_dir / "scripts" / "bash" / "common.sh",
         },
         "ps": {
             "scripts/powershell/setup-discover.ps1": (
-                target / "scripts" / "powershell" / "setup-discover.ps1"
+                prd_kit_dir / "scripts" / "powershell" / "setup-discover.ps1"
             ),
             "scripts/powershell/setup-draft.ps1": (
-                target / "scripts" / "powershell" / "setup-draft.ps1"
+                prd_kit_dir / "scripts" / "powershell" / "setup-draft.ps1"
             ),
             "scripts/powershell/setup-refine.ps1": (
-                target / "scripts" / "powershell" / "setup-refine.ps1"
+                prd_kit_dir / "scripts" / "powershell" / "setup-refine.ps1"
             ),
             "scripts/powershell/setup-decompose.ps1": (
-                target / "scripts" / "powershell" / "setup-decompose.ps1"
+                prd_kit_dir / "scripts" / "powershell" / "setup-decompose.ps1"
             ),
             "scripts/powershell/setup-deliverables.ps1": (
-                target / "scripts" / "powershell" / "setup-deliverables.ps1"
+                prd_kit_dir / "scripts" / "powershell" / "setup-deliverables.ps1"
             ),
-            "scripts/powershell/common.ps1": target / "scripts" / "powershell" / "common.ps1",
+            "scripts/powershell/common.ps1": prd_kit_dir / "scripts" / "powershell" / "common.ps1",
         },
     }
 
@@ -320,7 +320,10 @@ This project uses [PRD Kit](https://github.com/feirelles/prd-kit) for Product Re
 │   └── product-constitution.md   # Your product principles
 ├── templates/                     # Document templates
 ├── commands/                      # Agent command definitions
-└── validators/                    # Validation scripts
+├── validators/                    # Validation scripts
+└── scripts/                       # Setup scripts
+    ├── bash/                      # Linux/Mac scripts
+    └── powershell/                # Windows scripts
 
 prds/
 └── [feature-name]/
