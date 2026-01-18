@@ -1,6 +1,13 @@
 ---
 description: 'Generate a PRD draft from research notes'
 tools: ['codebase', 'editFiles', 'createFile', 'runInTerminal']
+handoffs:
+  - label: Refine PRD
+    agent: prd-refine
+    prompt: Refine and validate the PRD draft
+  - label: Skip to Decompose
+    agent: prd-decompose
+    prompt: Decompose the PRD into technical deliverables
 ---
 
 # PRD Draft Agent

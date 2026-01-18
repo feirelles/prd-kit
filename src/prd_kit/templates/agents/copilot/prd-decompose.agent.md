@@ -1,6 +1,10 @@
 ---
 description: 'Decompose an approved PRD into technical deliverables with dependencies'
 tools: ['codebase', 'editFiles', 'createFile', 'runInTerminal']
+handoffs:
+  - label: Generate Deliverable Files
+    agent: prd-deliverables
+    prompt: Generate the deliverable files from the decomposition map
 ---
 
 # PRD Decompose Agent

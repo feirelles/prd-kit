@@ -65,11 +65,14 @@ Options:
 
 After initialization, interact with the AI agents:
 
-1. **@prd-discover** - Start discovery, describe your product idea
-2. **@prd-draft** - Generate PRD from research notes
-3. **@prd-refine** - Validate and improve the PRD
-4. **@prd-decompose** - Break PRD into technical deliverables
-5. **@prd-deliverables** - Generate deliverable files for Spec Kit
+1. **@prd-constitution** - Set up your product principles (required first time)
+2. **@prd-discover** - Start discovery, describe your product idea
+3. **@prd-draft** - Generate PRD from research notes
+4. **@prd-refine** (optional) - Validate and improve the PRD, or skip to decompose
+5. **@prd-decompose** - Break PRD into technical deliverables
+6. **@prd-deliverables** - Generate deliverable files for Spec Kit
+
+> **Note**: The `@prd-discover` agent will automatically redirect you to `@prd-constitution` if your product constitution hasn't been set up yet. You can also skip refinement if your draft PRD is already solid.
 
 ### Directory Structure
 

@@ -1,6 +1,10 @@
 ---
 description: Start the discovery phase for a new PRD - interview the user to understand the product idea
 handoffs:
+  - label: Create Product Constitution
+    agent: prd-constitution
+    prompt: Help me create the product constitution first
+    send: false
   - label: Generate PRD Draft
     agent: prd-draft
     prompt: Generate the PRD draft from the research notes
@@ -26,6 +30,30 @@ Transform a vague product idea into structured research notes (`research.md`) by
 **CONSTITUTION AUTHORITY**: Read `.prd-kit/memory/product-constitution.md` first. Every question should validate alignment with product principles.
 
 **NO HALLUCINATION**: If information is unclear, mark with `[NEEDS_DETAIL: field_name]`. Never invent data.
+
+## Pre-Flight Check: Constitution Required
+
+**BEFORE starting discovery**, you MUST verify the constitution is complete:
+
+1. Run: `scripts/bash/setup-constitution.sh --json`
+2. Parse the JSON output and check the `STATUS` field
+3. **If STATUS is NOT "complete"**:
+   - Output this message:
+     ```
+     ⚠️ Product Constitution Required
+     
+     Before starting feature discovery, you need to set up your product constitution.
+     This document defines your product's vision, principles, personas, and constraints.
+     
+     It's essential for creating consistent, high-quality PRDs that align with your
+     product strategy.
+     
+     → Please run @prd-constitution to set up your product principles first.
+     ```
+   - **STOP execution** - do not proceed with discovery
+   - Wait for user to complete constitution via @prd-constitution
+
+4. **If STATUS is "complete"**: Proceed with discovery
 
 ## Execution Steps
 

@@ -147,6 +147,7 @@ def _copy_templates(target: Path, ai: str, script: str) -> None:
         "deliverable-template.md": prd_kit_dir / "templates" / "deliverable-template.md",
         "research-template.md": prd_kit_dir / "templates" / "research-template.md",
         # Commands
+        "commands/constitution.md": prd_kit_dir / "commands" / "constitution.md",
         "commands/discover.md": prd_kit_dir / "commands" / "discover.md",
         "commands/draft.md": prd_kit_dir / "commands" / "draft.md",
         "commands/refine.md": prd_kit_dir / "commands" / "refine.md",
@@ -163,6 +164,7 @@ def _copy_templates(target: Path, ai: str, script: str) -> None:
     # Scripts based on selected type
     script_templates = {
         "sh": {
+            "scripts/bash/setup-constitution.sh": target / "scripts" / "bash" / "setup-constitution.sh",
             "scripts/bash/setup-discover.sh": target / "scripts" / "bash" / "setup-discover.sh",
             "scripts/bash/setup-draft.sh": target / "scripts" / "bash" / "setup-draft.sh",
             "scripts/bash/setup-refine.sh": target / "scripts" / "bash" / "setup-refine.sh",
@@ -195,6 +197,9 @@ def _copy_templates(target: Path, ai: str, script: str) -> None:
     # Agent files based on AI type
     agent_templates = {
         "copilot": {
+            "agents/copilot/prd-constitution.agent.md": (
+                target / ".github" / "agents" / "prd-constitution.agent.md"
+            ),
             "agents/copilot/prd-discover.agent.md": (
                 target / ".github" / "agents" / "prd-discover.agent.md"
             ),
@@ -260,6 +265,7 @@ This project uses PRD Kit for Product Requirements Document generation.
 
 | Agent | Description |
 |-------|-------------|
+| `@prd-constitution` | Set up product principles, personas, and constraints (run first!) |
 | `@prd-discover` | Start discovery phase - interview to understand the product idea |
 | `@prd-draft` | Generate PRD draft from research notes |
 | `@prd-refine` | Refine and validate PRD against constitution |
@@ -268,11 +274,12 @@ This project uses PRD Kit for Product Requirements Document generation.
 
 ## Workflow
 
-1. **Discovery**: `@prd-discover` - Describe your product idea
-2. **Draft**: `@prd-draft` - Generate initial PRD
-3. **Refine**: `@prd-refine` - Validate and improve PRD
-4. **Decompose**: `@prd-decompose` - Break into deliverables
-5. **Generate**: `@prd-deliverables` - Create deliverable files
+1. **Constitution**: `@prd-constitution` - Define product principles (one-time setup)
+2. **Discovery**: `@prd-discover` - Describe your product idea
+3. **Draft**: `@prd-draft` - Generate initial PRD
+4. **Refine**: `@prd-refine` - Validate and improve PRD
+5. **Decompose**: `@prd-decompose` - Break into deliverables
+6. **Generate**: `@prd-deliverables` - Create deliverable files
 
 ## Configuration
 

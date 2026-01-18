@@ -1,6 +1,10 @@
 ---
 description: 'Generate deliverable files for handoff to Spec Kit'
 tools: ['codebase', 'editFiles', 'createFile', 'runInTerminal']
+handoffs:
+  - label: Start New Feature
+    agent: prd-discover
+    prompt: Start discovery for another feature
 ---
 
 # PRD Deliverables Agent
