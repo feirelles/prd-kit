@@ -60,7 +60,8 @@ STATUS=$(get_feature_status "$FEATURE_NAME")
 # ============================================================================
 EXISTING_DELIVERABLES=""
 if [[ -d "$DELIVERABLES_DIR" ]]; then
-    EXISTING_DELIVERABLES=$(ls "$DELIVERABLES_DIR"/deliverable-*.md 2>/dev/null | xargs -I{} basename {} | tr '\n' ',' | sed 's/,$//')
+    # Use find instead of ls to avoid exit code 2 when no files match (set -e)
+    EXISTING_DELIVERABLES=$(find "$DELIVERABLES_DIR" -maxdepth 1 -name 'deliverable-*.md' -printf '%f\n' 2>/dev/null | tr '\n' ',' | sed 's/,$//' || true)
 fi
 
 # ============================================================================

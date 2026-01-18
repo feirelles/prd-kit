@@ -143,7 +143,8 @@ get_feature_status() {
     local deliverables_dir=$(get_deliverables_dir "$feature_name")
     
     # Check for deliverable files (excluding map and README)
-    if [[ -d "$deliverables_dir" ]] && ls "$deliverables_dir"/deliverable-*.md &>/dev/null; then
+    # Use find instead of ls to avoid issues with glob patterns and set -e
+    if [[ -d "$deliverables_dir" ]] && [[ -n "$(find "$deliverables_dir" -maxdepth 1 -name 'deliverable-*.md' -print -quit 2>/dev/null)" ]]; then
         echo "deliverables_generated"
     elif [[ -f "$deliverables_map" ]]; then
         echo "decomposed"
