@@ -8,6 +8,7 @@ from prd_kit.commands.init import (
     PACKAGE_DIR,
     TEMPLATES_DIR,
     detect_shell,
+    _make_scripts_executable,
 )
 
 console = Console()
@@ -47,6 +48,9 @@ def update_command(
 
     # Update files (excluding user data)
     _update_files(target, ai, script)
+    
+    # Make bash scripts executable
+    _make_scripts_executable(target, script)
 
     console.print("\n[bold green]✓ PRD Kit updated successfully![/bold green]")
     console.print("\n[yellow]Note:[/yellow] Your PRDs and product-constitution.md were preserved")

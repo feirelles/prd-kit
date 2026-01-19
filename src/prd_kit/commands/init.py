@@ -3,6 +3,7 @@
 import os
 import platform
 import shutil
+import stat
 import subprocess
 from pathlib import Path
 
@@ -41,6 +42,27 @@ def detect_shell() -> str:
 
     # Linux, macOS, BSD, etc.
     return "sh"
+
+
+def _make_scripts_executable(target: Path, script: str) -> None:
+    """Make bash scripts executable (chmod +x)."""
+    if script != "sh":
+        return  # Only for bash scripts
+    
+    prd_kit_dir = target / ".prd-kit"
+    bash_scripts_dir = prd_kit_dir / "scripts" / "bash"
+    
+    if not bash_scripts_dir.exists():
+        return
+    
+    # Get all .sh files
+    script_files = list(bash_scripts_dir.glob("*.sh"))
+    
+    for script_file in script_files:
+        # Add execute permission (chmod +x)
+        current_permissions = script_file.stat().st_mode
+        script_file.chmod(current_permissions | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        console.print(f"  Made executable: [dim]{script_file.relative_to(target)}[/dim]")
 
 
 def init_command(
@@ -132,6 +154,9 @@ def _create_directory_structure(target: Path, ai: str, script: str) -> None:
 
     # Copy template files
     _copy_templates(target, ai, script)
+    
+    # Make bash scripts executable
+    _make_scripts_executable(target, script)
 
 
 def _copy_templates(target: Path, ai: str, script: str) -> None:
