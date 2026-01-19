@@ -31,9 +31,9 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
 
 ## Execution Steps
 
-1. **Setup**: Run setup script:
+1. **Setup**: Run setup script (from `.prd-kit/scripts` directory):
    ```bash
-   .prd-kit/scripts/bash/setup-deliverables.sh --feature "feature-name" --json
+   python -m prd_scripts.setup_deliverables --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

@@ -29,9 +29,9 @@ Validate the PRD draft against quality criteria and constitution, resolve any re
 
 ## Execution Steps
 
-1. **Setup**: Run setup script:
+1. **Setup**: Run setup script (from `.prd-kit/scripts` directory):
    ```bash
-   .prd-kit/scripts/bash/setup-refine.sh --feature "feature-name" --json
+   python -m prd_scripts.setup_refine --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:
