@@ -27,7 +27,7 @@ You are a Technical Writer who creates implementation briefs from decomposed PRD
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/generate-deliverables.md` for detailed instructions
-2. **Run setup script**: `.prd-kit/scripts/bash/setup-deliverables.sh --feature "[name]" --json`
+2. **Run setup script**: `python -m prd_scripts.setup_deliverables --feature "[name]" --json` (from `.prd-kit/scripts` directory)
 3. **Load deliverables-map.json** and PRD.md
 4. **For each deliverable**: Generate `deliverable-XXX-[name].md`
 5. **Create README.md** with implementation order

@@ -1,9 +1,6 @@
 """Init command implementation."""
 
-import os
-import platform
 import shutil
-import stat
 import subprocess
 from pathlib import Path
 
@@ -30,41 +27,6 @@ PRD_KIT_BANNER = """
 """
 
 
-def detect_shell() -> str:
-    """Detect the best shell for the current platform."""
-    system = platform.system().lower()
-
-    if system == "windows":
-        # Check if running in WSL
-        if "microsoft" in platform.release().lower():
-            return "sh"
-        return "ps"
-
-    # Linux, macOS, BSD, etc.
-    return "sh"
-
-
-def _make_scripts_executable(target: Path, script: str) -> None:
-    """Make bash scripts executable (chmod +x)."""
-    if script != "sh":
-        return  # Only for bash scripts
-    
-    prd_kit_dir = target / ".prd-kit"
-    bash_scripts_dir = prd_kit_dir / "scripts" / "bash"
-    
-    if not bash_scripts_dir.exists():
-        return
-    
-    # Get all .sh files
-    script_files = list(bash_scripts_dir.glob("*.sh"))
-    
-    for script_file in script_files:
-        # Add execute permission (chmod +x)
-        current_permissions = script_file.stat().st_mode
-        script_file.chmod(current_permissions | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
-        console.print(f"  Made executable: [dim]{script_file.relative_to(target)}[/dim]")
-
-
 def init_command(
     path: str,
     ai: str,
@@ -85,13 +47,10 @@ def init_command(
         console.print(f"Supported agents: {', '.join(supported_ai)}")
         raise SystemExit(1)
 
-    # Detect or validate script type
-    if script is None:
-        script = detect_shell()
-    elif script not in ["sh", "ps"]:
-        console.print(f"[red]Error:[/red] Unsupported script type: {script}")
-        console.print("Supported types: sh (bash), ps (powershell)")
-        raise SystemExit(1)
+    # Script type is now always Python (cross-platform)
+    # The --script option is kept for backward compatibility but ignored
+    if script is not None:
+        console.print(f"[yellow]Note:[/yellow] --script option is deprecated. Python scripts are now used for cross-platform support.")
 
     # Check if directory exists and is not empty
     if target.exists():
@@ -112,10 +71,10 @@ def init_command(
 
     console.print(f"[bold blue]Initializing PRD Kit[/bold blue] in {target}")
     console.print(f"  AI Agent: [green]{ai}[/green]")
-    console.print(f"  Script type: [green]{script}[/green]")
+    console.print(f"  Scripts: [green]Python (cross-platform)[/green]")
 
     # Create directory structure
-    _create_directory_structure(target, ai, script)
+    _create_directory_structure(target, ai)
 
     # Initialize git if requested
     if not no_git:
@@ -127,7 +86,7 @@ def init_command(
     console.print("  2. Start a new PRD with [cyan]@prd-discover[/cyan] in your AI assistant")
 
 
-def _create_directory_structure(target: Path, ai: str, script: str) -> None:
+def _create_directory_structure(target: Path, ai: str) -> None:
     """Create the PRD Kit directory structure."""
     # .prd-kit structure
     prd_kit_dir = target / ".prd-kit"
@@ -137,8 +96,7 @@ def _create_directory_structure(target: Path, ai: str, script: str) -> None:
         prd_kit_dir / "templates",
         prd_kit_dir / "commands",
         prd_kit_dir / "validators",
-        prd_kit_dir / "scripts" / "bash",
-        prd_kit_dir / "scripts" / "powershell",
+        prd_kit_dir / "scripts" / "prd_scripts",
         target / "prds",
     ]
 
@@ -153,13 +111,10 @@ def _create_directory_structure(target: Path, ai: str, script: str) -> None:
         console.print(f"  Created: [dim]{dir_path.relative_to(target)}[/dim]")
 
     # Copy template files
-    _copy_templates(target, ai, script)
-    
-    # Make bash scripts executable
-    _make_scripts_executable(target, script)
+    _copy_templates(target, ai)
 
 
-def _copy_templates(target: Path, ai: str, script: str) -> None:
+def _copy_templates(target: Path, ai: str) -> None:
     """Copy template files to the target directory."""
     prd_kit_dir = target / ".prd-kit"
 
@@ -186,40 +141,16 @@ def _copy_templates(target: Path, ai: str, script: str) -> None:
         ),
     }
 
-    # Scripts based on selected type
+    # Python scripts (cross-platform)
     script_templates = {
-        "sh": {
-            "scripts/bash/setup-constitution.sh": prd_kit_dir / "scripts" / "bash" / "setup-constitution.sh",
-            "scripts/bash/setup-discover.sh": prd_kit_dir / "scripts" / "bash" / "setup-discover.sh",
-            "scripts/bash/setup-draft.sh": prd_kit_dir / "scripts" / "bash" / "setup-draft.sh",
-            "scripts/bash/setup-refine.sh": prd_kit_dir / "scripts" / "bash" / "setup-refine.sh",
-            "scripts/bash/setup-decompose.sh": prd_kit_dir / "scripts" / "bash" / "setup-decompose.sh",
-            "scripts/bash/setup-deliverables.sh": (
-                prd_kit_dir / "scripts" / "bash" / "setup-deliverables.sh"
-            ),
-            "scripts/bash/common.sh": prd_kit_dir / "scripts" / "bash" / "common.sh",
-        },
-        "ps": {
-            "scripts/powershell/setup-constitution.ps1": (
-                prd_kit_dir / "scripts" / "powershell" / "setup-constitution.ps1"
-            ),
-            "scripts/powershell/setup-discover.ps1": (
-                prd_kit_dir / "scripts" / "powershell" / "setup-discover.ps1"
-            ),
-            "scripts/powershell/setup-draft.ps1": (
-                prd_kit_dir / "scripts" / "powershell" / "setup-draft.ps1"
-            ),
-            "scripts/powershell/setup-refine.ps1": (
-                prd_kit_dir / "scripts" / "powershell" / "setup-refine.ps1"
-            ),
-            "scripts/powershell/setup-decompose.ps1": (
-                prd_kit_dir / "scripts" / "powershell" / "setup-decompose.ps1"
-            ),
-            "scripts/powershell/setup-deliverables.ps1": (
-                prd_kit_dir / "scripts" / "powershell" / "setup-deliverables.ps1"
-            ),
-            "scripts/powershell/common.ps1": prd_kit_dir / "scripts" / "powershell" / "common.ps1",
-        },
+        "scripts/prd_scripts/__init__.py": prd_kit_dir / "scripts" / "prd_scripts" / "__init__.py",
+        "scripts/prd_scripts/common.py": prd_kit_dir / "scripts" / "prd_scripts" / "common.py",
+        "scripts/prd_scripts/setup_constitution.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_constitution.py",
+        "scripts/prd_scripts/setup_discover.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_discover.py",
+        "scripts/prd_scripts/setup_draft.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_draft.py",
+        "scripts/prd_scripts/setup_refine.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_refine.py",
+        "scripts/prd_scripts/setup_decompose.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_decompose.py",
+        "scripts/prd_scripts/setup_deliverables.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_deliverables.py",
     }
 
     # Agent files based on AI type
@@ -252,7 +183,7 @@ def _copy_templates(target: Path, ai: str, script: str) -> None:
     # Copy all template files
     all_templates = {
         **template_files,
-        **script_templates.get(script, {}),
+        **script_templates,
         **agent_templates.get(ai, {}),
     }
 
@@ -349,9 +280,8 @@ This project uses [PRD Kit](https://github.com/feirelles/prd-kit) for Product Re
 ├── templates/                     # Document templates
 ├── commands/                      # Agent command definitions
 ├── validators/                    # Validation scripts
-└── scripts/                       # Setup scripts
-    ├── bash/                      # Linux/Mac scripts
-    └── powershell/                # Windows scripts
+└── scripts/
+    └── prd_scripts/              # Python setup scripts (cross-platform)
 
 prds/
 └── [feature-name]/

@@ -62,7 +62,6 @@ prd init my-project --ai copilot
 
 Options:
 - `--ai copilot|claude` - AI agent to configure (default: copilot)
-- `--script sh|ps` - Script type (auto-detected if not specified)
 - `--here` - Initialize in current directory
 - `--force` - Force init in non-empty directory
 - `--no-git` - Skip git initialization
@@ -85,7 +84,6 @@ This preserves your PRDs and product-constitution.md while updating:
 
 Options:
 - `--ai copilot|claude` - Override AI agent type (auto-detected by default)
-- `--script sh|ps` - Override script type (auto-detected by default)
 
 ### Workflow
 

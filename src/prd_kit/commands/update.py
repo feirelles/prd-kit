@@ -7,8 +7,6 @@ from rich.console import Console
 from prd_kit.commands.init import (
     PACKAGE_DIR,
     TEMPLATES_DIR,
-    detect_shell,
-    _make_scripts_executable,
 )
 
 console = Console()
@@ -40,23 +38,21 @@ def update_command(
         else:
             ai = "copilot"  # default
 
-    if script is None:
-        script = detect_shell()
+    # Script type is now always Python (cross-platform)
+    if script is not None:
+        console.print(f"[yellow]Note:[/yellow] --script option is deprecated. Python scripts are now used for cross-platform support.")
 
     console.print(f"  AI Agent: [green]{ai}[/green]")
-    console.print(f"  Script type: [green]{script}[/green]")
+    console.print(f"  Scripts: [green]Python (cross-platform)[/green]")
 
     # Update files (excluding user data)
-    _update_files(target, ai, script)
-    
-    # Make bash scripts executable
-    _make_scripts_executable(target, script)
+    _update_files(target, ai)
 
     console.print("\n[bold green]✓ PRD Kit updated successfully![/bold green]")
     console.print("\n[yellow]Note:[/yellow] Your PRDs and product-constitution.md were preserved")
 
 
-def _update_files(target: Path, ai: str, script: str) -> None:
+def _update_files(target: Path, ai: str) -> None:
     """Update template files, preserving user data."""
     import shutil
 
@@ -81,19 +77,16 @@ def _update_files(target: Path, ai: str, script: str) -> None:
         "validators/generate-implementation-order.py": (
             prd_kit_dir / "validators" / "generate-implementation-order.py"
         ),
+        # Python scripts (cross-platform)
+        "scripts/prd_scripts/__init__.py": prd_kit_dir / "scripts" / "prd_scripts" / "__init__.py",
+        "scripts/prd_scripts/common.py": prd_kit_dir / "scripts" / "prd_scripts" / "common.py",
+        "scripts/prd_scripts/setup_constitution.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_constitution.py",
+        "scripts/prd_scripts/setup_discover.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_discover.py",
+        "scripts/prd_scripts/setup_draft.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_draft.py",
+        "scripts/prd_scripts/setup_refine.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_refine.py",
+        "scripts/prd_scripts/setup_decompose.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_decompose.py",
+        "scripts/prd_scripts/setup_deliverables.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_deliverables.py",
     }
-
-    # Scripts based on type
-    if script == "sh":
-        files_to_update.update({
-            "scripts/bash/common.sh": prd_kit_dir / "scripts" / "bash" / "common.sh",
-            "scripts/bash/setup-constitution.sh": prd_kit_dir / "scripts" / "bash" / "setup-constitution.sh",
-            "scripts/bash/setup-discover.sh": prd_kit_dir / "scripts" / "bash" / "setup-discover.sh",
-            "scripts/bash/setup-draft.sh": prd_kit_dir / "scripts" / "bash" / "setup-draft.sh",
-            "scripts/bash/setup-refine.sh": prd_kit_dir / "scripts" / "bash" / "setup-refine.sh",
-            "scripts/bash/setup-decompose.sh": prd_kit_dir / "scripts" / "bash" / "setup-decompose.sh",
-            "scripts/bash/setup-deliverables.sh": prd_kit_dir / "scripts" / "bash" / "setup-deliverables.sh",
-        })
 
     # Agents based on AI type
     if ai == "copilot":
