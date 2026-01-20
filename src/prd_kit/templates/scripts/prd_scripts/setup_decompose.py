@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""PRD Kit - Decompose Phase Setup Script."""
+"""PRD Kit - Decompose Phase Setup Script.
+
+This phase ONLY creates deliverables-map.json.
+DO NOT create deliverable-XXX.md files - that's the deliverables phase.
+"""
 
 import argparse
 import json

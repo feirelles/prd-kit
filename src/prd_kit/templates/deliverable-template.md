@@ -1,21 +1,36 @@
+<!--
+PRD Kit - Deliverable Template
+
+VALIDATION REQUIREMENTS:
+The following sections/fields are REQUIRED and checked by the validator:
+  ✅ **Source PRD**: Must be present
+  ✅ **Deliverable ID**: Must be present
+  ✅ ## Context: Must exist as a section
+  ✅ ## User Stories: Must exist as a section
+  ✅ ## Acceptance Criteria: Must exist as a section
+
+All other sections are recommended but not enforced.
+-->
+
 # Deliverable: [DELIVERABLE_NAME]
 
 **Source PRD**: prds/[FEATURE_NAME]/PRD.md
 **Deliverable ID**: [XXX]
-**Dependencies**: [LIST_OF_DEPENDENCY_IDS]
-**Priority**: [HIGH/MEDIUM/LOW]
+**Dependencies**: [LIST_OF_DEPENDENCY_IDS or "None"]
+**Priority**: [High/Medium/Low]
 
 ## Context
 
 [CONTEXT_EXTRACTED_FROM_PRD]
 <!-- 
-Summarize the relevant context from the source PRD that this deliverable addresses.
+REQUIRED SECTION - Summarize the relevant context from the source PRD.
 Include only information relevant to this specific component.
+This helps the implementer understand WHY this deliverable exists.
 -->
 
 ## User Stories
 
-<!-- Copy only the user stories that this deliverable implements -->
+<!-- REQUIRED SECTION - Copy only the user stories assigned to this deliverable -->
 
 ### [US_ID] [USER_STORY_TITLE]
 **Priority**: [P1/P2/P3]
@@ -48,6 +63,8 @@ Then [EXPECTED_RESULT]
 
 ## Acceptance Criteria
 
+<!-- REQUIRED SECTION - Testable criteria for this component -->
+
 ### Must Have (MVP)
 - [ ] [CRITERIA_1]
 - [ ] [CRITERIA_2]
@@ -79,12 +96,3 @@ Then [EXPECTED_RESULT]
 Any additional context, warnings, or suggestions for the implementation team.
 Reference specific sections of the PRD if needed.
 -->
-
----
-
-**Instructions for Spec Kit:**
-Use this deliverable file as input when initializing a new spec:
-```bash
-specify init specs/[FEATURE_NAME]-[DELIVERABLE_NAME]
-# Provide this file content when asked "What should I build?"
-```

@@ -19,11 +19,21 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Generate individual `deliverable-XXX.md` files for each component in the deliverables map. Each file will serve as input for initializing a Spec Kit specification.
 
+## ⚠️ CRITICAL: Prerequisites
+
+**Before running this command:**
+- `deliverables-map.json` MUST already exist (created by `@prd-decompose`)
+- If it doesn't exist, direct user to run `@prd-decompose` first
+
 ## Operating Constraints
 
 **DOCUMENTATION ROLE**: Act as a Technical Writer creating implementation briefs.
 
+**USE THE TEMPLATE**: Always load and follow `.prd-kit/templates/deliverable-template.md`.
+
 **SELF-CONTAINED**: Each deliverable file must contain all context needed for Spec Kit.
+
+**VALIDATION REQUIRED**: Every file must pass validation before completing.
 
 **NO SPEC GENERATION**: Do NOT generate spec.md files. Deliverables are input for Spec Kit.
 
@@ -38,11 +48,11 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
 
 2. **Load Inputs**:
    - Read `prds/[feature]/PRD.md` - source of requirements
-   - Read `prds/[feature]/deliverables/deliverables-map.json` - decomposition
-   - Read `.prd-kit/templates/deliverable-template.md` - output format
+   - Read `prds/[feature]/deliverables/deliverables-map.json` - decomposition (MUST exist)
+   - **Read `.prd-kit/templates/deliverable-template.md`** - REQUIRED template for output format
 
 3. **Validate Prerequisites**:
-   - deliverables-map.json must exist
+   - ❌ If `deliverables-map.json` doesn't exist → Stop and direct user to `@prd-decompose`
    - Dependency validation must pass
    - PRD must be approved
 
@@ -64,16 +74,16 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
       - Add integration criteria based on dependencies
       - Ensure criteria are independently testable
 
-   d. **Write Deliverable File**:
+   d. **Write Deliverable File** (following template exactly):
       Create `prds/[feature]/deliverables/deliverable-XXX-[name].md`
 
-      Structure:
+      **REQUIRED Structure** (all sections mandatory):
       ```markdown
       # Deliverable: [Title]
       
       **Source PRD**: prds/[feature]/PRD.md
       **Deliverable ID**: [XXX]
-      **Dependencies**: [List of IDs]
+      **Dependencies**: [List of IDs or "None"]
       **Priority**: [High/Medium/Low]
       
       ## Context
@@ -95,16 +105,20 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
       [Any additional context]
       ```
 
-5. **Validate All Deliverables**:
+5. **Validate All Deliverables** (REQUIRED - must pass before completing):
    ```bash
    python .prd-kit/validators/check-deliverables.py prds/[feature]/deliverables/
    ```
 
-   Checks:
-   - All deliverables from map are generated
-   - Required sections present
-   - User stories match PRD
-   - Dependencies reference valid IDs
+   **Required Checks** (validation must pass):
+   - ✅ All deliverables from map have files generated
+   - ✅ Each file has `Source PRD` reference
+   - ✅ Each file has `Deliverable ID`
+   - ✅ Each file has `## Context` section
+   - ✅ Each file has `## User Stories` section
+   - ✅ Each file has `## Acceptance Criteria` section
+
+   **If validation fails**: Fix the issues before proceeding.
 
 6. **Generate Summary Report**:
 

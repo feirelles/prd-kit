@@ -1,5 +1,5 @@
 ---
-description: Decompose an approved PRD into technical deliverables with dependency mapping
+description: Decompose an approved PRD into technical deliverables - creates deliverables-map.json ONLY
 handoffs:
   - label: Generate Deliverable Files
     agent: prd-deliverables
@@ -17,17 +17,32 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Goal
 
-Analyze the approved PRD and decompose it into discrete technical deliverables (components) with identified dependencies. Output a `deliverables-map.json` that defines what needs to be built.
+Analyze the approved PRD and decompose it into discrete technical deliverables (components) with identified dependencies. Output **ONLY** a `deliverables-map.json` that defines what needs to be built.
+
+## ⚠️ CRITICAL: Scope Limitation
+
+**THIS COMMAND ONLY CREATES `deliverables-map.json`**
+
+| ✅ DO | ❌ DO NOT |
+|-------|----------|
+| Create `deliverables-map.json` | Create `deliverable-XXX.md` files |
+| Validate the map structure | Generate README.md in deliverables |
+| Define dependencies | Write any implementation details |
+| Set implementation order | Hand off to Spec Kit directly |
+
+**The `@prd-deliverables` agent is responsible for generating the actual deliverable files.**
 
 ## Operating Constraints
 
 **ARCHITECT ROLE**: Act as a Technical Architect analyzing requirements for implementation.
 
+**MAP ONLY**: Your only output is `deliverables-map.json`. No other files.
+
 **NO IMPLEMENTATION DETAILS**: Focus on WHAT components are needed, not HOW to build them.
 
 **DEPENDENCY ACCURACY**: Dependencies must be real (component A needs B's API), not speculative.
 
-**SPEC KIT ALIGNMENT**: Each deliverable should be suitable as input for `specify init`.
+**SPEC KIT ALIGNMENT**: Each deliverable entry should be suitable as input for `specify init`.
 
 ## Execution Steps
 
@@ -172,8 +187,20 @@ Phase 2: [002], [003] (can be parallel)
         └──► [003]
 ```
 
-**Next Step**: Run @prd-deliverables to generate deliverable files
+✅ **Decomposition Complete**
+
+⚠️ **STOP HERE** - Do NOT generate deliverable files yet!
+
+**Next Step**: Run `@prd-deliverables` to generate the individual deliverable files from this map.
 ```
+
+## ⚠️ IMPORTANT: What NOT To Do
+
+After creating `deliverables-map.json`:
+- ❌ DO NOT create `deliverable-XXX.md` files
+- ❌ DO NOT create README.md in deliverables folder
+- ❌ DO NOT run the deliverables validation on files (only on the map)
+- ✅ DO hand off to `@prd-deliverables` for file generation
 
 ## Context
 
