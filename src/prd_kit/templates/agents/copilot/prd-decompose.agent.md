@@ -53,6 +53,8 @@ The `@prd-deliverables` agent is responsible for generating the actual deliverab
 - No circular dependencies
 - Minimize dependency depth
 - Mark what can be parallelized
+- **Consider future dependencies**: When mapping, note which deliverables will be built upon by others
+- **Out of Scope awareness**: For each deliverable, consider what features should NOT be implemented yet
 
 ## Output: deliverables-map.json ONLY
 

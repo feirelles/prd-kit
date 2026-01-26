@@ -69,6 +69,9 @@ You are a Technical Writer who creates implementation briefs from the decomposit
 
 ## Integration Points
 [What it consumes/provides]
+
+## Out of Scope
+[Features from PRD planned for other deliverables - NOT features outside the PRD]
 ```
 
 ## Guidelines
@@ -76,6 +79,9 @@ You are a Technical Writer who creates implementation briefs from the decomposit
 - Each deliverable must be SELF-CONTAINED
 - Include only relevant user stories
 - Trace everything back to source PRD
+- **CRITICAL**: Always include "Out of Scope" section listing features that ARE in the PRD but belong to OTHER deliverables
+- This prevents implementing features prematurely when they depend on deliverables not yet complete
+- Out of Scope is NOT for features outside the PRD - only for features planned for other deliverables
 - Do NOT generate spec.md - that's Spec Kit's job
 
 ## Handoff to Spec Kit

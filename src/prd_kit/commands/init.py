@@ -126,13 +126,21 @@ def _copy_templates(target: Path, ai: str) -> None:
         "prd-template.md": prd_kit_dir / "templates" / "prd-template.md",
         "deliverable-template.md": prd_kit_dir / "templates" / "deliverable-template.md",
         "research-template.md": prd_kit_dir / "templates" / "research-template.md",
-        # Commands
+        "context-template.md": prd_kit_dir / "templates" / "context-template.md",
+        "plan-template.md": prd_kit_dir / "templates" / "plan-template.md",
+        "tasks-template.md": prd_kit_dir / "templates" / "tasks-template.md",
+        # Commands - Phase 1 (Client-facing)
         "commands/constitution.md": prd_kit_dir / "commands" / "constitution.md",
         "commands/discover.md": prd_kit_dir / "commands" / "discover.md",
         "commands/draft.md": prd_kit_dir / "commands" / "draft.md",
         "commands/refine.md": prd_kit_dir / "commands" / "refine.md",
         "commands/decompose.md": prd_kit_dir / "commands" / "decompose.md",
         "commands/generate-deliverables.md": prd_kit_dir / "commands" / "generate-deliverables.md",
+        # Commands - Phase 2 (Technical)
+        "commands/init-feature.md": prd_kit_dir / "commands" / "init-feature.md",
+        "commands/context.md": prd_kit_dir / "commands" / "context.md",
+        "commands/plan.md": prd_kit_dir / "commands" / "plan.md",
+        "commands/tasks.md": prd_kit_dir / "commands" / "tasks.md",
         # Validators
         "validators/check-completeness.py": prd_kit_dir / "validators" / "check-completeness.py",
         "validators/check-deliverables.py": prd_kit_dir / "validators" / "check-deliverables.py",
@@ -151,6 +159,7 @@ def _copy_templates(target: Path, ai: str) -> None:
         "scripts/prd_scripts/setup_refine.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_refine.py",
         "scripts/prd_scripts/setup_decompose.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_decompose.py",
         "scripts/prd_scripts/setup_deliverables.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_deliverables.py",
+        "scripts/prd_scripts/setup_init_feature.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_init_feature.py",
     }
 
     # Agent files based on AI type

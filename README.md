@@ -89,14 +89,27 @@ Options:
 
 After initialization, interact with the AI agents:
 
+#### Phase 1: Client-Facing Documents
+
 1. **@prd-constitution** - Set up your product principles (required first time)
 2. **@prd-discover** - Start discovery, describe your product idea
 3. **@prd-draft** - Generate PRD from research notes
-4. **@prd-refine** (optional) - Validate and improve the PRD, or skip to decompose
+4. **@prd-refine** (optional) - Validate and improve the PRD
 5. **@prd-decompose** - Break PRD into technical deliverables
-6. **@prd-deliverables** - Generate deliverable files for Spec Kit
+6. **@prd-deliverables** - Generate deliverable files
 
-> **Note**: The `@prd-discover` agent will automatically redirect you to `@prd-constitution` if your product constitution hasn't been set up yet. You can also skip refinement if your draft PRD is already solid.
+> **Note**: Documents up to this point are suitable for client review and approval.
+
+#### Phase 2: Technical Documents (AI-Ready)
+
+After client approves deliverables:
+
+7. **@prd-init-feature** - Create feature branch and spec directory
+8. **@prd-context** - Analyze project codebase for patterns and context
+9. **@prd-plan** - Generate technical plan with architecture decisions
+10. **@prd-tasks** - Generate implementation tasks organized by layer
+
+> **Note**: Technical documents contain code, paths, and AI-ready implementation details.
 
 ### Directory Structure
 
@@ -115,17 +128,32 @@ prds/
     └── deliverables/
         ├── deliverables-map.json
         └── deliverable-XXX.md    # Technical deliverables
+
+specs/                             # NEW: Technical specs
+└── [XXX-feature-name]/
+    ├── README.md                 # Status tracker
+    ├── deliverable.md            # Copy of approved deliverable
+    ├── context.md                # Project analysis
+    ├── plan.md                   # Technical decisions
+    └── tasks.md                  # Implementation tasks by layer
 ```
 
-## Handoff to Spec Kit
+## Task Organization
 
-Each generated deliverable can be used to initialize a Spec Kit specification:
+Tasks in `tasks.md` are organized by **technical layer** (not user story):
 
-```bash
-specify init specs/[feature]-[component]
-# When asked "What should I build?", provide the deliverable file content
-```
+| Layer | Purpose | Checkpoint |
+|-------|---------|------------|
+| 0 | Types & Interfaces | TypeScript compiles |
+| 1 | Backend / API | Endpoints respond |
+| 2 | Data Layer | Data loads correctly |
+| 3 | UI Components | Components render |
+| 4 | Page Integration | Full flow works |
+| 5 | Polish & Validation | Production-ready |
+
+This prevents context-switching between frontend/backend during implementation.
 
 ## License
 
 MIT
+

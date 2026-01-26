@@ -1,0 +1,83 @@
+{
+  "feature": "Envio de Emails em Bulk Manual",
+  "source_prd": "prds/Envio de Emails em Bulk Manual/PRD.md",
+  "generated_at": "2026-01-25T00:00:00Z",
+  "deliverables": [
+    {
+      "id": "001",
+      "name": "bulk-collection-tasks-composable",
+      "title": "Composable de Busca de Tasks de Coleta com Dados Agregados",
+      "type": "frontend",
+      "description": "Composable Vue que encapsula a lógica de busca e agregação de dados de tasks de coleta, consumindo PocketBase diretamente via SDK. Retorna tasks filtradas por período com dados agregados (cliente, serviço, amostras laboratoriais, status de email) em formato otimizado para a UI.",
+      "user_stories": ["US1", "US2"],
+      "dependencies": [],
+      "priority": "high",
+      "estimated_effort": "small",
+      "file": "deliverable-001-bulk-collection-tasks-api.md",
+      "technical_notes": [
+        "Composable: app/composables/useBulkCollectionTasks.ts",
+        "Query em tasks com role='agendamento' e type='execution'",
+        "Expand multi-nível: serviceExecutionItemId → contractServiceId.serviceId",
+        "Batch fetch de lab services (evitar N+1 queries)",
+        "Buscar items laboratoriais (segment='laboratorial') do mesmo serviceExecutionId",
+        "Agregar expectedQuantity e nomes de serviços laboratoriais",
+        "Batch fetch de email status (evitar N+1 queries)",
+        "Retornar: reactive state com tasks[], loading, error + actions",
+        "Sem necessidade de endpoint server intermediário"
+      ]
+    },
+    {
+      "id": "002",
+      "name": "bulk-email-sending-ui",
+      "title": "Interface Completa de Envio Bulk de Avisos de Coleta",
+      "type": "frontend",
+      "description": "Interface completa incluindo: filtro por período, tabela de seleção com checkboxes, modal de preview com navegação (adaptação do modal existente), envio bulk com progresso interativo e relatório final. Usa composable useEmailService existente para envios.",
+      "user_stories": ["US1", "US2", "US3", "US4", "US5"],
+      "dependencies": ["001"],
+      "priority": "high",
+      "estimated_effort": "medium",
+      "file": "deliverable-002-bulk-email-sending-ui.md",
+      "technical_notes": [
+        "Nova página: app/pages/emails/bulk-avisos-coleta.vue",
+        "Filtro: DateRangePicker para dueDate (início/fim)",
+        "Tabela: @tanstack/vue-table com checkbox selection",
+        "Colunas: checkbox, cliente, serviço, data, qtd, amostras, status",
+        "Items já enviados: checkbox desmarcado + badge 'Enviado'",
+        "Integração: chamar API (deliverable 001) com filtros",
+        "Modal de preview: adaptar modal existente inline na página",
+        "  - Adicionar navegação Anterior/Próximo",
+        "  - Adicionar contador 'Email X de N'",
+        "  - Navegação apenas nos items selecionados",
+        "  - Suporte a teclado (← → arrows)",
+        "Envio bulk: loop sequencial com useEmailService.send()",
+        "Progresso: atualizar status de cada linha em tempo real",
+        "Relatório: notificação toast + contadores (sucesso/erro)",
+        "Permissões: role check (agendamento, gestor, admin)"
+      ]
+    }
+  ],
+  "dependency_graph": {
+    "001": [],
+    "002": ["001"]
+  },
+  "implementation_order": [
+    {
+      "phase": 1,
+      "deliverables": ["001"],
+      "parallel": false,
+      "description": "Backend API - fundação para o frontend"
+    },
+    {
+      "phase": 2,
+      "deliverables": ["002"],
+      "parallel": false,
+      "description": "Frontend completo com toda a UI e lógica de negócio"
+    }
+  ],
+  "validation": {
+    "circular_dependencies": false,
+    "all_dependencies_exist": true,
+    "total_deliverables": 2,
+    "total_phases": 2
+  }
+}

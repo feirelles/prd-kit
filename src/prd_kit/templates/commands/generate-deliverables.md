@@ -74,7 +74,14 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
       - Add integration criteria based on dependencies
       - Ensure criteria are independently testable
 
-   d. **Write Deliverable File** (following template exactly):
+   d. **Define Out of Scope**:
+      - Review the deliverables-map.json to identify which features belong to other deliverables
+      - List features from the PRD that are planned but will be implemented in OTHER deliverables
+      - Explain which deliverable will implement each out-of-scope feature
+      - This prevents premature implementation when dependencies from other deliverables are not ready yet
+      - Do NOT list features outside the PRD - only features planned for different deliverables
+
+   e. **Write Deliverable File** (following template exactly):
       Create `prds/[feature]/deliverables/deliverable-XXX-[name].md`
 
       **REQUIRED Structure** (all sections mandatory):
@@ -100,6 +107,9 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
       
       ## Integration Points
       [What this consumes and provides]
+      
+      ## Out of Scope
+      [Features from PRD that belong to other deliverables - prevents premature implementation]
       
       ## Notes for Implementation
       [Any additional context]

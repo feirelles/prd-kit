@@ -35,6 +35,10 @@ REQUIRED_DELIVERABLE_SECTIONS = [
     "Acceptance Criteria",
 ]
 
+RECOMMENDED_DELIVERABLE_SECTIONS = [
+    "Out of Scope",  # Lists PRD features planned for other deliverables (prevents premature implementation)
+]
+
 
 def load_deliverables_map(map_path: Path) -> dict | None:
     """Load and parse deliverables-map.json."""
@@ -94,13 +98,18 @@ def check_circular_dependencies(deliverables: list[dict]) -> list[str]:
     return issues
 
 
-def validate_deliverable_file(file_path: Path) -> list[str]:
-    """Validate a single deliverable file."""
+def validate_deliverable_file(file_path: Path) -> tuple[list[str], list[str]]:
+    """Validate a single deliverable file.
+    
+    Returns:
+        Tuple of (issues, warnings)
+    """
     issues = []
+    warnings = []
     
     if not file_path.exists():
         issues.append(f"Deliverable file not found: {file_path}")
-        return issues
+        return issues, warnings
     
     content = file_path.read_text()
     
@@ -109,6 +118,12 @@ def validate_deliverable_file(file_path: Path) -> list[str]:
         pattern = rf'^##\s+{re.escape(section)}'
         if not re.search(pattern, content, re.MULTILINE | re.IGNORECASE):
             issues.append(f"{file_path.name}: Missing required section '{section}'")
+    
+    # Check recommended sections
+    for section in RECOMMENDED_DELIVERABLE_SECTIONS:
+        pattern = rf'^##\s+{re.escape(section)}'
+        if not re.search(pattern, content, re.MULTILINE | re.IGNORECASE):
+            warnings.append(f"{file_path.name}: Missing recommended section '{section}' - should list PRD features planned for other deliverables")
     
     # Check for Source PRD reference
     if "Source PRD" not in content:
@@ -123,7 +138,7 @@ def validate_deliverable_file(file_path: Path) -> list[str]:
     if needs_detail:
         issues.append(f"{file_path.name}: Contains {len(needs_detail)} [NEEDS_DETAIL] tags")
     
-    return issues
+    return issues, warnings
 
 
 def validate_deliverables_map(map_data: dict) -> list[str]:
@@ -199,8 +214,9 @@ def validate_directory(dir_path: Path) -> ValidationResult:
         file_name = d.get("file", "")
         if file_name:
             file_path = dir_path / file_name
-            file_issues = validate_deliverable_file(file_path)
+            file_issues, file_warnings = validate_deliverable_file(file_path)
             issues.extend(file_issues)
+            warnings.extend(file_warnings)
     
     # Check for orphan deliverable files (not in map)
     map_files = {d.get("file", "") for d in deliverables}
@@ -226,11 +242,11 @@ def main() -> int:
         result = validate_directory(path.parent)
     else:
         # Single file validation
-        file_issues = validate_deliverable_file(path)
+        file_issues, file_warnings = validate_deliverable_file(path)
         result = ValidationResult(
             passed=len(file_issues) == 0,
             issues=file_issues,
-            warnings=[],
+            warnings=file_warnings,
         )
     
     # Output as JSON
