@@ -167,6 +167,7 @@ def _copy_templates(target: Path, ai: str) -> None:
     # Agent files based on AI type
     agent_templates = {
         "copilot": {
+            # Phase 1 agents
             "agents/copilot/prd-constitution.agent.md": (
                 target / ".github" / "agents" / "prd-constitution.agent.md"
             ),
@@ -184,6 +185,22 @@ def _copy_templates(target: Path, ai: str) -> None:
             ),
             "agents/copilot/prd-deliverables.agent.md": (
                 target / ".github" / "agents" / "prd-deliverables.agent.md"
+            ),
+            # Phase 2 agents
+            "agents/copilot/prd-tech-constitution.agent.md": (
+                target / ".github" / "agents" / "prd-tech-constitution.agent.md"
+            ),
+            "agents/copilot/prd-init-feature.agent.md": (
+                target / ".github" / "agents" / "prd-init-feature.agent.md"
+            ),
+            "agents/copilot/prd-context.agent.md": (
+                target / ".github" / "agents" / "prd-context.agent.md"
+            ),
+            "agents/copilot/prd-plan.agent.md": (
+                target / ".github" / "agents" / "prd-plan.agent.md"
+            ),
+            "agents/copilot/prd-tasks.agent.md": (
+                target / ".github" / "agents" / "prd-tasks.agent.md"
             ),
         },
         "claude": {
