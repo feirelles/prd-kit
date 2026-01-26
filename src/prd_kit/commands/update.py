@@ -120,6 +120,42 @@ def _update_files(target: Path, ai: str) -> None:
             ),
         })
 
+    # Cleanup: Remove obsolete files
+    cleaned_count = 0
+    
+    # Directories that should only contain managed files
+    dirs_to_scan = [
+        prd_kit_dir / "templates",
+        prd_kit_dir / "commands",
+        prd_kit_dir / "validators",
+        prd_kit_dir / "scripts" / "prd_scripts",
+    ]
+    
+    if ai == "copilot":
+        dirs_to_scan.append(target / ".github" / "agents")
+    
+    # Create set of expected paths for fast lookup
+    expected_paths = set(files_to_update.values())
+    
+    for dir_path in dirs_to_scan:
+        if not dir_path.exists():
+            continue
+            
+        for file_path in dir_path.iterdir():
+            if file_path.is_file():
+                # Skip partial files or hidden files if needed
+                if file_path.name.startswith("."):
+                    continue
+                
+                # If file exists on disk but not in our expected list, delete it
+                if file_path not in expected_paths:
+                    try:
+                        file_path.unlink()
+                        console.print(f"  Removed: [red]{file_path.relative_to(target)}[/red]")
+                        cleaned_count += 1
+                    except Exception as e:
+                        console.print(f"  [yellow]Failed to remove {file_path.relative_to(target)}: {e}[/yellow]")
+
     # Copy files
     updated_count = 0
     created_count = 0
@@ -136,4 +172,4 @@ def _update_files(target: Path, ai: str) -> None:
                 console.print(f"  Created: [green]{dest_path.relative_to(target)}[/green]")
                 created_count += 1
 
-    console.print(f"\n[green]Updated {updated_count} files, created {created_count} new files[/green]")
+    console.print(f"\n[green]Updated {updated_count} files, created {created_count} new files, removed {cleaned_count} obsolete files[/green]")
