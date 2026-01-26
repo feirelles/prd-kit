@@ -80,12 +80,14 @@ Each task follows this format:
    - Read `specs/[XXX]/plan.md` - Layer breakdown, decisions
    - Read `specs/[XXX]/context.md` - Skills, patterns
    - Read `specs/[XXX]/deliverable.md` - Acceptance criteria
+   - Read `.prd-kit/memory/tech-constitution.md` - Coding standards
 
 3. **For Each Layer in Plan**:
    - Extract components/files to create
    - Generate scaffold task (create with stubs)
    - Generate implementation tasks
-   - Add checkpoint verification task
+   - **Enforce Standards**: Ensure tasks include "Use [standard] naming" or "Follow [pattern] from Constitution"
+   - Add checkpoint verification step
 
 4. **Add Context Tasks**: For each layer that requires skills:
    - Add `[Context]` task to read relevant skills

@@ -95,30 +95,34 @@ Check for available guidance:
    ls -la
    ```
 
-4. **Analyze Directory Structure**:
+4. **Load Technical Constitution**: 
+   - Read `.prd-kit/memory/tech-constitution.md`
+   - **CRITICAL**: Use this to filter discovered patterns. Only patterns aligned with the constitution should be recommended.
+
+5. **Analyze Directory Structure**:
    ```bash
    # List key directories
    ls -la app/ src/ components/ pages/ server/
    ```
 
-5. **Search for Relevant Patterns**: Based on deliverable requirements:
+6. **Search for Relevant Patterns**: Based on deliverable requirements:
    - If needs table → search for existing table components
    - If needs modal → search for modal patterns
    - If needs API → check server/api structure
 
-6. **Read Previous Specs**:
+7. **Read Previous Specs**:
    ```bash
    ls specs/
    # For relevant ones, read plan.md
    ```
 
-7. **Discover Skills/Instructions**:
+8. **Discover Skills/Instructions**:
    ```bash
    ls .github/skills/
    ls .github/instructions/
    ```
 
-8. **Generate context.md**: Create `specs/[XXX]/context.md`
+9. **Generate context.md**: Create `specs/[XXX]/context.md`
 
 ## Output Format: context.md
 

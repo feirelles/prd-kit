@@ -122,6 +122,7 @@ def _copy_templates(target: Path, ai: str) -> None:
     template_files = {
         # Memory
         "memory/product-constitution.md": prd_kit_dir / "memory" / "product-constitution.md",
+        "tech-constitution.md": prd_kit_dir / "templates" / "tech-constitution.md",
         # Templates
         "prd-template.md": prd_kit_dir / "templates" / "prd-template.md",
         "deliverable-template.md": prd_kit_dir / "templates" / "deliverable-template.md",
@@ -141,6 +142,7 @@ def _copy_templates(target: Path, ai: str) -> None:
         "commands/context.md": prd_kit_dir / "commands" / "context.md",
         "commands/plan.md": prd_kit_dir / "commands" / "plan.md",
         "commands/tasks.md": prd_kit_dir / "commands" / "tasks.md",
+        "commands/tech-constitution.md": prd_kit_dir / "commands" / "tech-constitution.md",
         # Validators
         "validators/check-completeness.py": prd_kit_dir / "validators" / "check-completeness.py",
         "validators/check-deliverables.py": prd_kit_dir / "validators" / "check-deliverables.py",

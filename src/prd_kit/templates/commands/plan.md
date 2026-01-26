@@ -47,16 +47,17 @@ Generate a comprehensive technical plan (`plan.md`) that combines the deliverabl
 2. **Load Inputs**:
    - Read `specs/[XXX]/deliverable.md` - User stories, acceptance criteria
    - Read `specs/[XXX]/context.md` - Project patterns, stack, skills
+   - Read `.prd-kit/memory/tech-constitution.md` - **STRICT RULES**
 
 3. **For Each User Story**:
    - Identify what technical components are needed
    - Map to existing patterns from context
-   - Note what needs to be created vs reused
+   - Verify alignment with **Tech Constitution** layers
 
 4. **Make Architectural Decisions**:
    - Routing/URL structure
-   - Component hierarchy
-   - State management approach
+   - Component hierarchy (Must follow Constitution depth/naming)
+   - State management approach (Must follow Constitution store rules)
    - Data flow
    - API contracts
 

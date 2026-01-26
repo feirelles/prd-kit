@@ -92,11 +92,12 @@ After initialization, interact with the AI agents:
 #### Phase 1: Client-Facing Documents
 
 1. **@prd-constitution** - Set up your product principles (required first time)
-2. **@prd-discover** - Start discovery, describe your product idea
-3. **@prd-draft** - Generate PRD from research notes
-4. **@prd-refine** (optional) - Validate and improve the PRD
-5. **@prd-decompose** - Break PRD into technical deliverables
-6. **@prd-deliverables** - Generate deliverable files
+2. **@prd-tech-constitution** - Set up your technical stack and rules (required for Phase 2)
+3. **@prd-discover** - Start discovery, describe your product idea
+4. **@prd-draft** - Generate PRD from research notes
+5. **@prd-refine** (optional) - Validate and improve the PRD
+6. **@prd-decompose** - Break PRD into technical deliverables
+7. **@prd-deliverables** - Generate deliverable files
 
 > **Note**: Documents up to this point are suitable for client review and approval.
 
@@ -116,7 +117,8 @@ After client approves deliverables:
 ```
 .prd-kit/
 ├── memory/
-│   └── product-constitution.md   # Your product principles
+│   ├── product-constitution.md   # Your product principles
+│   └── tech-constitution.md      # Your technical rules (stack, patterns)
 ├── templates/                     # Document templates
 ├── commands/                      # Agent command definitions
 └── validators/                    # Validation scripts

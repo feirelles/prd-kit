@@ -67,6 +67,7 @@ def _update_files(target: Path, ai: str) -> None:
         "context-template.md": prd_kit_dir / "templates" / "context-template.md",
         "plan-template.md": prd_kit_dir / "templates" / "plan-template.md",
         "tasks-template.md": prd_kit_dir / "templates" / "tasks-template.md",
+        "tech-constitution.md": prd_kit_dir / "templates" / "tech-constitution.md",
         # Commands
         "commands/constitution.md": prd_kit_dir / "commands" / "constitution.md",
         "commands/discover.md": prd_kit_dir / "commands" / "discover.md",
@@ -79,6 +80,7 @@ def _update_files(target: Path, ai: str) -> None:
         "commands/context.md": prd_kit_dir / "commands" / "context.md",
         "commands/plan.md": prd_kit_dir / "commands" / "plan.md",
         "commands/tasks.md": prd_kit_dir / "commands" / "tasks.md",
+        "commands/tech-constitution.md": prd_kit_dir / "commands" / "tech-constitution.md",
         # Validators
         "validators/check-completeness.py": prd_kit_dir / "validators" / "check-completeness.py",
         "validators/check-deliverables.py": prd_kit_dir / "validators" / "check-deliverables.py",
@@ -173,3 +175,12 @@ def _update_files(target: Path, ai: str) -> None:
                 created_count += 1
 
     console.print(f"\n[green]Updated {updated_count} files, created {created_count} new files, removed {cleaned_count} obsolete files[/green]")
+
+    # Migration Check: Tech Constitution
+    tech_const_dest = prd_kit_dir / "memory" / "tech-constitution.md"
+    tech_const_src = prd_kit_dir / "templates" / "tech-constitution.md"
+    
+    if not tech_const_dest.exists() and tech_const_src.exists():
+        shutil.copy2(tech_const_src, tech_const_dest)
+        console.print(f"\n[bold blue]Migration Info:[/bold blue] Created [cyan]{tech_const_dest.relative_to(target)}[/cyan]")
+        console.print("Please edit this file to define your technical stack and rules.")
