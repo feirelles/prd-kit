@@ -105,12 +105,16 @@ After initialization, interact with the AI agents:
 
 After client approves deliverables:
 
-7. **@prd-init-feature** - Create feature branch and spec directory
-8. **@prd-context** - Analyze project codebase for patterns and context
-9. **@prd-plan** - Generate technical plan with architecture decisions
-10. **@prd-tasks** - Generate implementation tasks organized by layer
+7. **@prd-init-feature [deliverable(s)]** - Create feature branch and spec directory
+   - Single: `@prd-init-feature 004` (creates `feat/001-foundation`)
+   - Multiple: `@prd-init-feature 004 021 022 023` (creates ONE branch for all: `feat/001-foundation-and-setup`)
+8. **@prd-context [spec]** - Analyze project codebase for patterns and context
+9. **@prd-plan [spec]** - Generate technical plan with architecture decisions
+10. **@prd-tasks [spec]** - Generate implementation tasks organized by layer
 
 > **Note**: Technical documents contain code, paths, and AI-ready implementation details.
+> 
+> **Multiple Deliverables**: When you provide multiple deliverables to `@prd-init-feature`, they are combined into a single branch and directory. This is useful for implementing small, related features together.
 
 ### Directory Structure
 
