@@ -31,9 +31,9 @@ Synthesize the research notes (`research.md`) into a structured PRD draft (`PRD.
 
 ## Execution Steps
 
-1. **Setup**: Run setup script to get file paths (from `.prd-kit/scripts` directory):
+1. **Setup**: Run setup script to get file paths:
    ```bash
-   python -m prd_scripts.setup_draft --feature "feature-name" --json
+   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_draft --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

@@ -4,10 +4,12 @@ tools: ['codebase', 'readFile', 'runInTerminal', 'fetch', 'editFiles', 'createFi
 handoffs:
   - label: Create Product Constitution
     agent: prd-constitution
-    prompt: Help me create the product constitution first
+    prompt: Set up the product constitution before discovery
+    send: false
   - label: Generate PRD Draft
     agent: prd-draft
-    prompt: Generate the PRD draft from the research notes
+    prompt: Generate PRD draft from research notes
+    send: false
 ---
 
 # PRD Discovery Agent

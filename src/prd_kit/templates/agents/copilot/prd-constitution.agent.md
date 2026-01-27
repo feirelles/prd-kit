@@ -4,7 +4,8 @@ tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile']
 handoffs:
   - label: Start Feature Discovery
     agent: prd-discover
-    prompt: Start discovery for a new feature
+    prompt: Start discovery for [feature name/idea]
+    send: false
 ---
 
 # PRD Constitution Agent

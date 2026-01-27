@@ -4,7 +4,8 @@ tools: ['codebase', 'readFile', 'runInTerminal', 'createFile']
 handoffs:
   - label: Generate Deliverable Files
     agent: prd-deliverables
-    prompt: Generate the deliverable files from the decomposition map
+    prompt: Generate deliverable files from the decomposition map
+    send: false
 ---
 
 # PRD Decompose Agent

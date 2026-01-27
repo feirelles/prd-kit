@@ -4,10 +4,12 @@ tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile']
 handoffs:
   - label: Refine PRD
     agent: prd-refine
-    prompt: Refine and validate the PRD draft
+    prompt: Review and validate the PRD draft
+    send: false
   - label: Skip to Decompose
     agent: prd-decompose
-    prompt: Decompose the PRD into technical deliverables
+    prompt: Decompose PRD into deliverables (skip refinement)
+    send: false
 ---
 
 # PRD Draft Agent

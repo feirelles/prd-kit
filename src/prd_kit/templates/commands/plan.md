@@ -31,7 +31,7 @@ Generate a comprehensive technical plan (`plan.md`) that combines the deliverabl
 
 1. **Setup**: Run setup script to get paths:
    ```bash
-   python -m prd_scripts.setup_plan --spec "[spec-identifier]" --json
+   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_plan --spec "[spec-identifier]" --json
    ```
 
 2. Verify the JSON output:

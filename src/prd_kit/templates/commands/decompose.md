@@ -46,9 +46,9 @@ Analyze the approved PRD and decompose it into discrete technical deliverables (
 
 ## Execution Steps
 
-1. **Setup**: Run setup script (from `.prd-kit/scripts` directory):
+1. **Setup**: Run setup script:
    ```bash
-   python -m prd_scripts.setup_decompose --feature "feature-name" --json
+   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_decompose --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

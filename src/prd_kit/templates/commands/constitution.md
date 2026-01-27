@@ -29,9 +29,9 @@ Create or complete the Product Constitution (`.prd-kit/memory/product-constituti
 
 ## Execution Steps
 
-1. **Setup**: Run setup script to get paths (from `.prd-kit/scripts` directory):
+1. **Setup**: Run setup script to get paths:
    ```bash
-   python -m prd_scripts.setup_constitution --json
+   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_constitution --json
    ```
 
 2. **Load Current State**: Read `.prd-kit/memory/product-constitution.md`

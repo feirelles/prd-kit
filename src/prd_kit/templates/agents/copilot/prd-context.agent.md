@@ -4,7 +4,7 @@ tools: ['codebase', 'search', 'readFile', 'usages', 'runInTerminal', 'editFiles'
 handoffs:
   - label: Generate Technical Plan
     agent: prd-plan
-    prompt: Create technical plan for this feature
+    prompt: Create technical plan for spec [spec-number or name]
     send: false
 ---
 

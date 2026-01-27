@@ -4,7 +4,8 @@ tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles']
 handoffs:
   - label: Decompose into Deliverables
     agent: prd-decompose
-    prompt: Decompose the approved PRD into technical deliverables
+    prompt: Break the approved PRD into technical deliverables
+    send: false
 ---
 
 # PRD Refine Agent

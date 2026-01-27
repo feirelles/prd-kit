@@ -4,7 +4,7 @@ tools: ['codebase', 'readFile', 'search', 'runInTerminal', 'editFiles', 'createF
 handoffs:
   - label: Initialize Feature
     agent: prd-init-feature
-    prompt: Start working on a deliverable
+    prompt: Initialize deliverable [ID or IDs] for implementation
     send: false
 ---
 

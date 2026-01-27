@@ -5,9 +5,11 @@ handoffs:
   - label: Start New Feature
     agent: prd-discover
     prompt: Start discovery for another feature
+    send: false
   - label: Initialize Feature
     agent: prd-init-feature
-    prompt: Initialize the first deliverable for implementation
+    prompt: Initialize deliverable [ID] for implementation
+    send: false
 ---
 
 # PRD Deliverables Agent

@@ -4,7 +4,7 @@ tools: ['runInTerminal', 'readFile']
 handoffs:
   - label: Analyze Project Context
     agent: prd-context
-    prompt: Analyze project for this feature
+    prompt: Analyze project patterns for spec [spec-number or name]
     send: false
 ---
 

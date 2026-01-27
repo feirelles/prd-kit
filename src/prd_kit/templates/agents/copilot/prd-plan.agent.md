@@ -4,7 +4,7 @@ tools: ['codebase', 'search', 'readFile', 'usages', 'runInTerminal', 'editFiles'
 handoffs:
   - label: Generate Implementation Tasks
     agent: prd-tasks
-    prompt: Break down the plan into implementation tasks
+    prompt: Generate implementation tasks for spec [spec-number or name]
     send: false
 ---
 
