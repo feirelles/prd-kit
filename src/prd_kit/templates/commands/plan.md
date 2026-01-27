@@ -29,9 +29,16 @@ Generate a comprehensive technical plan (`plan.md`) that combines the deliverabl
 
 ## Pre-Flight Check: Context Required
 
-1. Identify the spec directory from $ARGUMENTS
-2. Verify `specs/[XXX]-[name]/context.md` exists
-3. If not found:
+1. **Setup**: Run setup script to get paths:
+   ```bash
+   python -m prd_scripts.setup_plan --spec "[spec-identifier]" --json
+   ```
+
+2. Verify the JSON output:
+   - `STATUS` should be `ready`
+   - `HAS_CONTEXT` should be `true`
+
+3. If status is `missing_context`:
    ```
    ⚠️ Context Not Generated
    

@@ -26,9 +26,16 @@ Generate a `tasks.md` file with implementation tasks organized by **technical la
 
 ## Pre-Flight Check: Plan Required
 
-1. Identify the spec directory from $ARGUMENTS
-2. Verify `specs/[XXX]-[name]/plan.md` exists
-3. If not found:
+1. **Setup**: Run setup script to get paths:
+   ```bash
+   python -m prd_scripts.setup_tasks --spec "[spec-identifier]" --json
+   ```
+
+2. Verify the JSON output:
+   - `STATUS` should be `ready`
+   - `HAS_PLAN` should be `true`
+
+3. If status is `missing_plan`:
    ```
    ⚠️ Plan Not Generated
    

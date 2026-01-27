@@ -29,13 +29,20 @@ Analyze the existing codebase and generate a `context.md` file that provides the
 
 ## Pre-Flight Check: Feature Directory Required
 
-1. Identify the spec directory from $ARGUMENTS
-2. Verify `specs/[XXX]-[name]/` exists
-3. If not found:
+1. **Setup**: Run setup script to get paths:
+   ```bash
+   python -m prd_scripts.setup_context --spec "[spec-identifier]" --json
+   ```
+
+2. Verify the JSON output:
+   - `STATUS` should be `ready`
+   - `HAS_DELIVERABLE` should be `true`
+
+3. If status is `missing_deliverable`:
    ```
    ⚠️ Feature Not Initialized
    
-   Could not find spec directory for: [input]
+   Could not find deliverable.md for: [input]
    
    → Run @prd-init-feature first to create the feature structure.
    ```
