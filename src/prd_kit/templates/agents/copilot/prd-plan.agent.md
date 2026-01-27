@@ -139,6 +139,16 @@ Page: pages/[path].vue
 - Be explicit about what's new vs reused
 - Note any deviations from typical patterns
 
+## Final Step: Update README
+
+After successfully creating `plan.md`, update `specs/[XXX]/README.md`:
+
+```markdown
+- [x] plan.md - Technical decisions (run @prd-plan)
+```
+
+Change `[ ]` to `[x]` for the plan.md line.
+
 ## Handoff
 
 When plan is complete, suggest `@prd-tasks` to generate implementation tasks.

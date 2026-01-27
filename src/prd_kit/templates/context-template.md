@@ -29,6 +29,24 @@
 
 ---
 
+## Database Schema
+
+### Collections/Tables
+- **[collection_name]**:
+  - Fields: `fieldName` ([type]), `anotherField` ([type])
+  - Relations: [describe relationships]
+  - Timestamps: `[created/updated fields]`
+  - Naming: [collection: snake_case/camelCase, fields: snake_case/camelCase]
+
+### Naming Conventions Observed
+- Collections: [snake_case | camelCase | PascalCase]
+- Fields: [snake_case | camelCase]
+- Timestamps: [auto-managed | manual, field names]
+
+> **Note**: If schema not found, state: "Schema to be defined during planning phase"
+
+---
+
 ## Reusable Patterns
 
 ### [PATTERN_CATEGORY_1]

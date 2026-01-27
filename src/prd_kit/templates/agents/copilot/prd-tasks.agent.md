@@ -55,6 +55,20 @@ Use markers to clarify task purpose:
 - `[Test]` - Validation/testing task
 - `[P]` - Parallelizable with previous task
 
+## Final Step: Update README
+
+After successfully creating `tasks.md`, update `specs/[XXX]/README.md`:
+
+1. Mark tasks.md as complete:
+   ```markdown
+   - [x] tasks.md - Implementation tasks (run @prd-tasks)
+   ```
+
+2. Update status:
+   ```markdown
+   **Status**: Ready for Implementation
+   ```
+
 ## Output Format
 
 Generate `specs/[XXX]/tasks.md` with:

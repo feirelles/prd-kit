@@ -76,14 +76,39 @@ Search for patterns relevant to this feature:
 - API endpoint patterns
 - State management approach
 
-### 4. Previous Specs Analysis
+### 4. Database Schema Discovery (CRITICAL)
+
+**ALWAYS attempt to discover database schema** if feature involves data:
+
+**Priority 1 - MCP Tools**:
+- Try PocketBase MCP tools if available
+- Query for collections and schema
+
+**Priority 2 - Migration Files**:
+- PocketBase: Search `pb_migrations/*.js`
+- Prisma: Read `prisma/schema.prisma`
+- SQL: Check `migrations/*.sql`, `db/schema.sql`
+- TypeORM/Drizzle: Find `src/db/schema.ts`
+
+**Priority 3 - Type Definitions**:
+- Search `types/*.ts` for database models
+- Look for interfaces matching table names
+
+**Document in context.md**:
+- Collection/table names and naming convention
+- Field names and types
+- Relations between entities
+- Timestamp handling (auto/manual)
+- Observed naming patterns (snake_case vs camelCase)
+
+### 5. Previous Specs Analysis
 
 Read existing specs for context:
 - Check `specs/*/plan.md` for prior technical decisions
 - Check `specs/*/context.md` for lessons learned
 - Identify dependencies from related features
 
-### 5. Skills and Instructions Discovery
+### 6. Skills and Instructions Discovery
 
 Check for available guidance:
 - `.github/skills/*/SKILL.md` - Domain expertise

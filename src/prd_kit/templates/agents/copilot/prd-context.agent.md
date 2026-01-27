@@ -37,7 +37,50 @@ You are a Codebase Analyst specialized in understanding existing projects to inf
    - Existing components similar to what we need
    - Composables/hooks that can be reused
    - Previous specs for patterns
+   - **Database schema** (see Schema Discovery below)
 6. **Generate context.md**
+
+## Schema Discovery (CRITICAL)
+
+**ALWAYS attempt to discover the database schema** if the feature involves data:
+
+### Method 1: MCP Tools (Preferred)
+If PocketBase MCP is available:
+```bash
+# Try to get collections and schema
+@pocketbase/list-collections
+@pocketbase/get-collection-schema
+```
+
+### Method 2: Migration Files
+Search for schema definition files:
+- **PocketBase**: `pb_migrations/*.js` - Read migration files for schema
+- **Prisma**: `prisma/schema.prisma` - Full schema definition
+- **SQL**: `migrations/*.sql`, `db/schema.sql` - Raw SQL migrations
+- **TypeORM/Drizzle**: `src/db/schema.ts` or similar
+
+### Method 3: Type Definitions
+Check existing TypeScript types:
+- `types/*.ts`, `src/types/*.ts`
+- Interface definitions that match DB tables
+
+### What to Document in context.md:
+```markdown
+## Database Schema
+
+### Collections/Tables
+- **collection_name**:
+  - Fields: `fieldName` (type), `anotherField` (type)
+  - Relations: references to other collections
+  - Naming convention: [snake_case/camelCase for collection, snake_case/camelCase for fields]
+
+### Naming Patterns Found
+- Collections: [convention observed]
+- Fields: [convention observed]
+- Timestamps: [auto/manual, field names]
+```
+
+**If schema is not found**: Note in context.md that schema needs to be defined during planning.
 
 ## Analysis Checklist
 
@@ -98,6 +141,16 @@ Generate `specs/[XXX]/context.md` with:
 - Focus on RELEVANT patterns - don't list everything
 - Prioritize exact matches over similar patterns
 - Note any gaps where new patterns are needed
+
+## Final Step: Update README
+
+After successfully creating `context.md`, update `specs/[XXX]/README.md`:
+
+```markdown
+- [x] context.md - Project analysis (run @prd-context)
+```
+
+Change `[ ]` to `[x]` for the context.md line.
 
 ## Handoff
 

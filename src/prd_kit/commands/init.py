@@ -162,6 +162,9 @@ def _copy_templates(target: Path, ai: str) -> None:
         "scripts/prd_scripts/setup_decompose.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_decompose.py",
         "scripts/prd_scripts/setup_deliverables.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_deliverables.py",
         "scripts/prd_scripts/setup_init_feature.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_init_feature.py",
+        "scripts/prd_scripts/setup_context.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_context.py",
+        "scripts/prd_scripts/setup_plan.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_plan.py",
+        "scripts/prd_scripts/setup_tasks.py": prd_kit_dir / "scripts" / "prd_scripts" / "setup_tasks.py",
     }
 
     # Agent files based on AI type
