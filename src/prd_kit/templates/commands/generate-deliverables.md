@@ -150,24 +150,61 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
    
    Generated from: prds/[feature]/PRD.md
    Generated at: [DATE]
+   Total: [N] deliverables
+   
+   ## Overview
+   
+   | ID | Name | Type | Priority | Effort | Dependencies |
+   |----|------|------|----------|--------|--------------|
+   | 001 | [name] | [Backend/Frontend] | [High/Medium/Low] | [Small/Medium/Large] | [List or None] |
+   | ... | ... | ... | ... | ... | ... |
    
    ## Implementation Order
    
-   ### Phase 1 (Sequential)
+   ### Phase 1: [Phase Name] (Sequential)
+   **Must complete before Phase 2**
+   
    1. [deliverable-001-name.md](deliverable-001-name.md) - [Title]
+      - Priority: High
+      - Effort: Small
+      - Dependencies: None
    
-   ### Phase 2 (Parallel)
-   - [deliverable-002-name.md](deliverable-002-name.md) - [Title]
+   2. [deliverable-002-name.md](deliverable-002-name.md) - [Title]
+      - Priority: High
+      - Effort: Medium
+      - Dependencies: 001
+   
+   ### Phase 2: [Phase Name] (Parallel)
+   **Can be implemented in parallel after Phase 1**
+   
    - [deliverable-003-name.md](deliverable-003-name.md) - [Title]
+   - [deliverable-004-name.md](deliverable-004-name.md) - [Title]
+   - [deliverable-005-name.md](deliverable-005-name.md) - [Title]
    
-   ## Handoff to Spec Kit
+   ### Phase 3: [Phase Name]
+   ...
+   
+   ## Next Steps
    
    For each deliverable, run:
    ```bash
-   specify init specs/[feature]-[deliverable-name]
+   @prd-init-feature [deliverable-id]
+   # Or combine related deliverables:
+   @prd-init-feature 001 002 003
    ```
-   When asked "What should I build?", provide the deliverable file content.
+   
+   Then follow Phase 2 workflow:
+   1. `@prd-context [spec]` - Analyze project
+   2. `@prd-plan [spec]` - Create technical plan
+   3. `@prd-tasks [spec]` - Generate tasks
+   4. `@prd-implement [spec]` - Execute implementation
    ```
+
+   **CRITICAL**: This README is a roadmap. It helps users understand:
+   - Which deliverables to implement first
+   - Which can be done in parallel
+   - Dependencies between deliverables
+   - Total scope of the project
 
 ## Output Format
 

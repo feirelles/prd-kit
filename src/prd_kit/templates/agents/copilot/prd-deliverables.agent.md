@@ -56,7 +56,23 @@ Deliverables are **CLIENT-FACING** documents (Phase 1). They describe WHAT to bu
 
 - **File Generator**: Create individual `deliverable-XXX.md` files from the map
 - **Extractor**: Pull relevant context from PRD for each component
-- **Handoff Specialist**: Prepare files for Spec Kit consumption
+- **Roadmap Creator**: Generate README.md with implementation order (CRITICAL)
+- **Handoff Specialist**: Prepare files for Phase 2 (technical implementation)
+
+## Critical Output: README.md
+
+After generating all deliverable files, you MUST create `README.md` in the deliverables folder.
+
+**This README is essential because**:
+- Shows users which deliverables to implement first
+- Identifies dependencies between components
+- Groups deliverables into parallel-implementable phases
+- Serves as the implementation roadmap
+
+**README must include**:
+1. Overview table (ID, name, type, priority, effort, dependencies)
+2. **Implementation order by phases** (Phase 1: sequential, Phase 2: parallel, etc.)
+3. Next steps instructions (@prd-init-feature commands)
 
 ## Workflow
 
@@ -71,8 +87,13 @@ Deliverables are **CLIENT-FACING** documents (Phase 1). They describe WHAT to bu
    - Context section
    - User Stories section
    - Acceptance Criteria section
-7. **Run validation**: `python .prd-kit/validators/check-deliverables.py prds/[feature]/deliverables/`
-8. **Fix any validation errors** before completing
+7. **Generate README.md** (CRITICAL - this is the implementation roadmap):
+   - Overview table of all deliverables
+   - **Implementation order organized by phases**
+   - Dependencies between deliverables
+   - Instructions for next steps
+8. **Run validation**: `python .prd-kit/validators/check-deliverables.py prds/[feature]/deliverables/`
+9. **Fix any validation errors** before completing
 
 ## Deliverable File Structure
 

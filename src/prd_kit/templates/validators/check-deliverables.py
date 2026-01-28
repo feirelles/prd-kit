@@ -243,6 +243,18 @@ def validate_directory(dir_path: Path) -> ValidationResult:
         if f.name not in map_files:
             warnings.append(f"Orphan deliverable file not in map: {f.name}")
     
+    # Check for README.md (implementation roadmap)
+    readme_path = dir_path / "README.md"
+    if not readme_path.exists():
+        issues.append("README.md not found - implementation roadmap is required")
+    else:
+        # Validate README has key sections
+        readme_content = readme_path.read_text()
+        if "Implementation Order" not in readme_content:
+            warnings.append("README.md missing 'Implementation Order' section")
+        if "Phase" not in readme_content:
+            warnings.append("README.md should organize deliverables by phases")
+    
     passed = len(issues) == 0
     return ValidationResult(passed=passed, issues=issues, warnings=warnings)
 

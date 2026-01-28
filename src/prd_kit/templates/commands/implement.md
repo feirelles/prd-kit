@@ -125,6 +125,51 @@ Agent stops after specified tasks for verification.
    - If user specified starting task, begin from that task
    - If user specified layer, find first incomplete task in that layer
 
+4. **Handle Task Types**:
+
+   ⚠️ **CRITICAL: [Context] Tasks are MANDATORY and MUST be executed FIRST**
+
+   **[Context] Tasks** (NEVER SKIP):
+   ```markdown
+   - [ ] T001 [Context] Review existing composable patterns
+     - Read: `.github/skills/vue/SKILL.md`
+     - Read: `composables/` directory structure
+   ```
+   
+   **Agent MUST**:
+   1. **STOP immediately** when encountering [Context] task
+   2. **READ every file/skill** listed in the task
+   3. **UNDERSTAND** the patterns and conventions
+   4. **Mark task complete** only after reading
+   5. **THEN proceed** to next task
+   
+   **Agent MUST NEVER**:
+   - Skip [Context] tasks
+   - Mark [Context] complete without reading
+   - Implement before completing [Context]
+   - Assume patterns without reading skills
+   
+   **WHY**: Skills contain project-specific patterns, conventions, and best practices that are essential for writing code that matches the project style.
+
+   **[Scaffold] Tasks**:
+   ```markdown
+   - [ ] T002 [Scaffold] Create useCameras composable
+     - Location: `composables/useCameras.ts`
+   ```
+   → Create file with structure only (exports, function signatures, no logic)
+
+   **[Implement] Tasks**:
+   ```markdown
+   - [ ] T003 [Implement] Add camera fetching logic
+   ```
+   → Full implementation following plan.md decisions AND patterns from [Context] tasks
+
+   **[Test] Tasks**:
+   ```markdown
+   - [ ] T010 [Test] Verify camera list renders
+   ```
+   → Run tests or provide manual test instructions
+
    **[Context] Tasks**:
    ```
    - [ ] T001 [Context] Review existing composable patterns
