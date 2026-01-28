@@ -35,10 +35,11 @@ python .prd-kit/scripts/prd_scripts/setup_refine.py --feature "[name]" --json
 
 1. **Read the command file** at `.prd-kit/commands/refine.md` for detailed instructions
 2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_refine.py --feature "[name]" --json`
-3. **Load PRD.md** and cross-reference with research.md
-4. **Run quality checklist** (see command file for full list)
-5. **Check constitution compliance**
-6. **Validate** with `python .prd-kit/validators/check-completeness.py`
+3. **Load product-constitution.md** from `.prd-kit/memory/product-constitution.md`
+4. **Load PRD.md** and cross-reference with research.md
+5. **Run quality checklist** (see command file for full list)
+6. **Check constitution compliance** against product-constitution.md
+7. **Validate** with `python .prd-kit/validators/check-completeness.py`
 
 ## Quality Checklist Summary
 
@@ -51,7 +52,7 @@ python .prd-kit/scripts/prd_scripts/setup_refine.py --feature "[name]" --json
 
 ## Constitution Compliance
 
-For EACH principle and anti-pattern in the constitution:
+For EACH principle and anti-pattern in `.prd-kit/memory/product-constitution.md`:
 - Verify PRD alignment
 - Document evidence
 - Flag violations as CRITICAL

@@ -86,7 +86,8 @@ python .prd-kit/scripts/prd_scripts/setup_deliverables.py --feature "[name]" --j
 1. **Read the command file** at `.prd-kit/commands/generate-deliverables.md` for detailed instructions
 2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_deliverables.py --feature "[name]" --json`
 3. **Verify prerequisite**: Check that `deliverables-map.json` exists
-4. **Load template**: Read `.prd-kit/templates/deliverable-template.md`
+4. **Load PRD.md** and `product-constitution.md` for context
+5. **Load template**: Read `.prd-kit/templates/deliverable-template.md`
 5. **For each deliverable in map**: Generate `deliverable-XXX-[name].md` using template
 6. **Validate each file** has all required sections:
    - Source PRD reference

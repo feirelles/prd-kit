@@ -41,12 +41,14 @@ python .prd-kit/scripts/prd_scripts/setup_decompose.py --feature "[name]" --json
 
 1. **Read the command file** at `.prd-kit/commands/decompose.md` for detailed instructions
 2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_decompose.py --feature "[name]" --json`
-3. **Analyze PRD.md** for component patterns
-4. **Identify deliverables** (frontend, backend, integrations)
-5. **Map dependencies** between components
-6. **Generate ONLY deliverables-map.json** (no other files!)
-7. **Validate** with `python .prd-kit/validators/check-deliverables.py`
-8. **Hand off to @prd-deliverables** to generate the actual files
+3. **Load PRD.md** - understand requirements and user stories
+4. **Reference product-constitution.md** (optional) - understand constraints and anti-patterns
+5. **Analyze PRD.md** for component patterns
+6. **Identify deliverables** (frontend, backend, integrations)
+7. **Map dependencies** between components
+8. **Generate ONLY deliverables-map.json** (no other files!)
+9. **Validate** with `python .prd-kit/validators/check-deliverables.py`
+10. **Hand off to @prd-deliverables** to generate the actual files
 
 ## Decomposition Patterns
 

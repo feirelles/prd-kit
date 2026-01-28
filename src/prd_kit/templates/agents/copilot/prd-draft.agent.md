@@ -39,9 +39,10 @@ python .prd-kit/scripts/prd_scripts/setup_draft.py --feature "[name]" --json
 
 1. **Read the command file** at `.prd-kit/commands/draft.md` for detailed instructions
 2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_draft.py --feature "[name]" --json`
-3. **Load research.md** from the feature directory
-4. **Generate PRD.md** using `.prd-kit/templates/prd-template.md`
-5. **Validate** with `python .prd-kit/validators/check-completeness.py`
+3. **Load product-constitution.md** from `.prd-kit/memory/product-constitution.md`
+4. **Load research.md** from the feature directory
+5. **Generate PRD.md** using `.prd-kit/templates/prd-template.md`
+6. **Validate** with `python .prd-kit/validators/check-completeness.py`
 
 ## User Story Format
 
