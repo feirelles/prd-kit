@@ -138,6 +138,25 @@ def validate_deliverable_file(file_path: Path) -> tuple[list[str], list[str]]:
     if needs_detail:
         issues.append(f"{file_path.name}: Contains {len(needs_detail)} [NEEDS_DETAIL] tags")
     
+    # Check for code blocks (deliverables should NOT have code)
+    code_blocks = re.findall(r'```(?:typescript|javascript|python|js|ts|vue|jsx|tsx)', content, re.IGNORECASE)
+    if code_blocks:
+        warnings.append(f"{file_path.name}: Contains {len(code_blocks)} code blocks - deliverables should use plain English or pseudocode only")
+    
+    # Check for common code patterns (type definitions, imports, etc.)
+    code_patterns = [
+        (r'\binterface\s+\w+\s*{', 'TypeScript interfaces'),
+        (r'\btype\s+\w+\s*=', 'TypeScript type definitions'),
+        (r'\bimport\s+.*\bfrom\b', 'import statements'),
+        (r'\bexport\s+(default\s+)?(class|function|const|interface)', 'export statements'),
+        (r'src/\w+/\w+\.(vue|ts|js|tsx|jsx)', 'file paths'),
+    ]
+    
+    for pattern, description in code_patterns:
+        matches = re.findall(pattern, content)
+        if matches:
+            warnings.append(f"{file_path.name}: Contains {description} - deliverables should be client-facing without code")
+    
     return issues, warnings
 
 

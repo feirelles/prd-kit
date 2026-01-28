@@ -39,6 +39,18 @@ Generate individual `deliverable-XXX.md` files for each component in the deliver
 
 **TRACEABILITY**: Every requirement must trace back to the source PRD.
 
+**⚠️ CRITICAL: NO CODE IN DELIVERABLES**:
+- ❌ NO code snippets (TypeScript, JavaScript, Python, etc.)
+- ❌ NO file paths or directory structures  
+- ❌ NO specific library/framework implementations
+- ❌ NO interface/type definitions or schemas
+- ✅ USE: Plain English descriptions
+- ✅ USE: Business logic in prose
+- ✅ USE: Simple pseudocode ONLY if essential for understanding
+- ✅ USE: Technical constraints as bullet points
+
+**WHY NO CODE**: Deliverables are Phase 1 (client-facing). We haven't analyzed the project yet (@prd-context). Code at this stage is often wrong because we don't know project patterns yet.
+
 ## Execution Steps
 
 1. **Setup**: Run setup script:

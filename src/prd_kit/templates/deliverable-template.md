@@ -14,7 +14,21 @@
 <!-- 
 Summarize the relevant context from the source PRD that this deliverable addresses.
 Include only information relevant to this specific component.
-NO CODE OR TECHNICAL DETAILS HERE - those come after @prd-context
+
+⚠️ NO CODE ALLOWED:
+- NO code snippets (no TypeScript, JavaScript, Python, etc.)
+- NO file paths or directory structures
+- NO specific library/framework implementations
+- NO interface/type definitions
+
+✅ USE INSTEAD:
+- Plain English descriptions
+- Business logic in prose
+- Conceptual flows (if needed, use simple pseudocode)
+- Technical constraints as bullet points
+
+WHY: We haven't analyzed the project yet (@prd-context hasn't run).
+Code at this stage is often wrong because we don't know the project patterns yet.
 -->
 
 ---
@@ -53,12 +67,57 @@ Then [EXPECTED_RESULT]
 
 ---
 
-## Implementation Notes
+## Technical Constraints
 
-<!-- High-level guidelines, constraints, warnings -->
-<!-- NO CODE: paths, types, interfaces, snippets -->
+<!-- High-level technical requirements and constraints ONLY -->
+<!-- Describe WHAT needs to happen, not HOW to implement -->
 
-[NOTES]
+**Performance**:
+- [Constraint, e.g., "Must handle 1000 concurrent users"]
+
+**Security**:
+- [Constraint, e.g., "Must authenticate all requests"]
+
+**Integration**:
+- [Constraint, e.g., "Must be compatible with existing API"]
+
+**Data**:
+- [Constraint, e.g., "Must preserve data consistency"]
+
+<!-- 
+⚠️ NO CODE EXAMPLES HERE
+Use plain English or simple pseudocode ONLY if absolutely necessary to explain a complex concept.
+
+Example of GOOD constraint:
+✅ "Authentication must verify user permissions before allowing access"
+
+Example of BAD (too technical for this phase):
+❌ "Use JWT tokens with RS256 signing and validate against auth0"
+-->
+
+---
+
+## ⚠️ Document Scope
+
+This deliverable is **CLIENT-FACING** (Phase 1). It describes WHAT to build, not HOW.
+
+**What belongs here**:
+- User-facing features and behavior
+- Business rules and workflows
+- Acceptance criteria (user perspective)
+- High-level technical constraints
+
+**What does NOT belong here**:
+- Code snippets or implementations
+- Specific file paths or structures
+- Library/framework choices
+- Type definitions or interfaces
+
+Those technical details come in **Phase 2** after running:
+- `@prd-init-feature` → creates branch and spec directory  
+- `@prd-context` → analyzes project patterns
+- `@prd-plan` → makes technical decisions
+- `@prd-tasks` → generates implementation tasks
 
 ---
 
