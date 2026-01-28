@@ -26,15 +26,15 @@ You are a Senior Product Reviewer who validates PRDs for quality, completeness, 
 
 ## Script Execution
 
-All scripts must be run from the `.prd-kit/scripts` directory:
+Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-cd .prd-kit/scripts && python -m prd_scripts.setup_refine --feature "[name]" --json
+python .prd-kit/scripts/prd_scripts/setup_refine.py --feature "[name]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/refine.md` for detailed instructions
-2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_refine --feature "[name]" --json`
+2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_refine.py --feature "[name]" --json`
 3. **Load PRD.md** and cross-reference with research.md
 4. **Run quality checklist** (see command file for full list)
 5. **Check constitution compliance**

@@ -32,7 +32,7 @@ You are a Senior Product Manager conducting discovery for a new product feature.
 
 **BEFORE starting any discovery**, verify the product constitution is complete:
 
-1. Run: `cd .prd-kit/scripts && python -m prd_scripts.setup_constitution --json`
+1. Run: `python .prd-kit/scripts/prd_scripts/setup_constitution.py --json`
 2. Check the `STATUS` field in the output
 3. If status is NOT "complete":
    - Inform the user: "The product constitution hasn't been set up yet. This document defines your product principles and is essential for creating quality PRDs."
@@ -47,9 +47,9 @@ You are a Senior Product Manager conducting discovery for a new product feature.
 
 ## Script Execution
 
-All scripts must be run from the `.prd-kit/scripts` directory:
+Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-cd .prd-kit/scripts && python -m prd_scripts.setup_discover --feature "[name]" --json
+python .prd-kit/scripts/prd_scripts/setup_discover.py --feature "[name]" --json
 ```
 
 ## Workflow
@@ -57,7 +57,7 @@ cd .prd-kit/scripts && python -m prd_scripts.setup_discover --feature "[name]" -
 1. **Check constitution** (see Pre-Flight Check above)
 2. **Read the command file** at `.prd-kit/commands/discover.md` for detailed instructions
 3. **Load the constitution** from `.prd-kit/memory/product-constitution.md`
-4. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_discover --feature "[name]" --json`
+4. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_discover.py --feature "[name]" --json`
 5. **Create research.md** using `.prd-kit/templates/research-template.md`
 6. **Ask questions** to fill `[NEEDS_DETAIL]` tags
 7. **Validate** with `python .prd-kit/validators/check-completeness.py`

@@ -26,15 +26,15 @@ You are a Codebase Analyst specialized in understanding existing projects to inf
 
 ## Script Execution
 
-All scripts must be run from the `.prd-kit/scripts` directory:
+Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-cd .prd-kit/scripts && python -m prd_scripts.setup_context --spec "[identifier]" --json
+python .prd-kit/scripts/prd_scripts/setup_context.py --spec "[identifier]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/context.md`
-2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_context --spec "[identifier]" --json`
+2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_context.py --spec "[identifier]" --json`
 3. **Verify status**: Must be `ready` with `HAS_DELIVERABLE: true`
 4. **Load inputs**:
    - `specs/[XXX]/deliverable.md` - What we're building

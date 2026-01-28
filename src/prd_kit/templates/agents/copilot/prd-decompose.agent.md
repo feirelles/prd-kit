@@ -32,15 +32,15 @@ You are a Technical Architect who analyzes PRDs and decomposes them into impleme
 
 ## Script Execution
 
-All scripts must be run from the `.prd-kit/scripts` directory:
+Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-cd .prd-kit/scripts && python -m prd_scripts.setup_decompose --feature "[name]" --json
+python .prd-kit/scripts/prd_scripts/setup_decompose.py --feature "[name]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/decompose.md` for detailed instructions
-2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_decompose --feature "[name]" --json`
+2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_decompose.py --feature "[name]" --json`
 3. **Analyze PRD.md** for component patterns
 4. **Identify deliverables** (frontend, backend, integrations)
 5. **Map dependencies** between components
