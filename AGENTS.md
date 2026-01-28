@@ -24,6 +24,7 @@ This project uses PRD Kit for Product Requirements Document generation.
 | `@prd-context` | Analyze codebase for patterns | `context.md` |
 | `@prd-plan` | Make architectural decisions | `plan.md` |
 | `@prd-tasks` | Generate implementation tasks | `tasks.md` |
+| `@prd-implement` | Execute tasks following the plan | Code files |
 
 ## Workflow
 
@@ -41,6 +42,7 @@ This project uses PRD Kit for Product Requirements Document generation.
 9. `@prd-context [spec]` - Analyze project patterns
 10. `@prd-plan [spec]` - Create technical plan
 11. `@prd-tasks [spec]` - Generate implementation tasks
+12. `@prd-implement [spec]` - Execute tasks (stops at checkpoints for verification)
 
 ## Agent Scope Limitations
 
@@ -52,6 +54,7 @@ Each agent is **strictly limited** to its specific function:
 | `@prd-context` | Analyze codebase, write context.md | Make decisions, create code |
 | `@prd-plan` | Make decisions, write plan.md | Implement, create components |
 | `@prd-tasks` | Generate task list, write tasks.md | Execute tasks, write code |
+| `@prd-implement` | Execute tasks, write code | Deviate from plan, skip checkpoints |
 
 ## Configuration
 

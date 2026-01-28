@@ -111,6 +111,10 @@ After client approves deliverables:
 8. **@prd-context [spec]** - Analyze project codebase for patterns and context
 9. **@prd-plan [spec]** - Generate technical plan with architecture decisions
 10. **@prd-tasks [spec]** - Generate implementation tasks organized by layer
+11. **@prd-implement [spec]** - Execute tasks following the plan
+    - Default: Stops at layer checkpoints for verification
+    - `--continuous`: Implements without stopping
+    - `--custom-checkpoints T003,T007`: Define custom stopping points
 
 > **Note**: Technical documents contain code, paths, and AI-ready implementation details.
 > 

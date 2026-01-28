@@ -1,6 +1,19 @@
 ---
 description: 'Generate implementation tasks organized by technical layer'
 tools: ['codebase', 'search', 'readFile', 'runInTerminal', 'editFiles', 'createFile']
+handoffs:
+  - label: Implement with Checkpoints
+    agent: prd-implement
+    prompt: Implement tasks for spec [spec-number or name]. Stop at each layer for me to verify.
+    send: false
+  - label: Implement Continuously
+    agent: prd-implement
+    prompt: Implement all tasks for spec [spec-number or name] without stopping. Only stop on errors.
+    send: false
+  - label: Implement from Specific Task
+    agent: prd-implement
+    prompt: Implement tasks for spec [spec-number or name] starting from task [T###]
+    send: false
 ---
 
 # PRD Tasks Agent

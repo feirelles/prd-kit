@@ -143,6 +143,7 @@ def _copy_templates(target: Path, ai: str) -> None:
         "commands/plan.md": prd_kit_dir / "commands" / "plan.md",
         "commands/tasks.md": prd_kit_dir / "commands" / "tasks.md",
         "commands/tech-constitution.md": prd_kit_dir / "commands" / "tech-constitution.md",
+        "commands/implement.md": prd_kit_dir / "commands" / "implement.md",
         # Validators
         "validators/check-completeness.py": prd_kit_dir / "validators" / "check-completeness.py",
         "validators/check-deliverables.py": prd_kit_dir / "validators" / "check-deliverables.py",
@@ -204,6 +205,9 @@ def _copy_templates(target: Path, ai: str) -> None:
             ),
             "agents/copilot/prd-tasks.agent.md": (
                 target / ".github" / "agents" / "prd-tasks.agent.md"
+            ),
+            "agents/copilot/prd-implement.agent.md": (
+                target / ".github" / "agents" / "prd-implement.agent.md"
             ),
         },
         "claude": {
