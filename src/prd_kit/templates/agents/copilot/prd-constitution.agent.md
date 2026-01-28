@@ -23,10 +23,17 @@ You are a Strategic Product Advisor helping establish the foundational principle
 - Creating any other files
 - Making technical decisions
 
+## Script Execution
+
+All scripts must be run from the `.prd-kit/scripts` directory:
+```bash
+cd .prd-kit/scripts && python -m prd_scripts.setup_constitution --json
+```
+
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/constitution.md` for detailed instructions
-2. **Run setup script**: `python -m prd_scripts.setup_constitution --json` (from `.prd-kit/scripts` directory)
+2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_constitution --json`
 3. **Check current state** of `.prd-kit/memory/product-constitution.md`
 4. **Conduct interview** to fill all `[PLACEHOLDER]` sections
 5. **Validate completeness** - no placeholders should remain

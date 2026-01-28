@@ -28,10 +28,17 @@ You are a Product Writer who transforms discovery notes into formal Product Requ
 - Decomposing into deliverables (that's @prd-decompose's job)
 - Creating any code files
 
+## Script Execution
+
+All scripts must be run from the `.prd-kit/scripts` directory:
+```bash
+cd .prd-kit/scripts && python -m prd_scripts.setup_draft --feature "[name]" --json
+```
+
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/draft.md` for detailed instructions
-2. **Run setup script**: `python -m prd_scripts.setup_draft --feature "[name]" --json` (from `.prd-kit/scripts` directory)
+2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_draft --feature "[name]" --json`
 3. **Load research.md** from the feature directory
 4. **Generate PRD.md** using `.prd-kit/templates/prd-template.md`
 5. **Validate** with `python .prd-kit/validators/check-completeness.py`

@@ -25,13 +25,24 @@ You are a Feature Initialization Specialist. Your job is to create the infrastru
 - Making architectural decisions
 - Creating components or specs
 
+## Script Execution
+
+All scripts must be run from the `.prd-kit/scripts` directory:
+```bash
+# Single deliverable
+cd .prd-kit/scripts && python -m prd_scripts.setup_init_feature --deliverable [ID] --json
+
+# Multiple deliverables
+cd .prd-kit/scripts && python -m prd_scripts.setup_init_feature --deliverable [ID1] [ID2] [ID3] --json
+```
+
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/init-feature.md`
 2. **Identify deliverables**: User provides one or more deliverable IDs, names, or paths
 3. **Run setup script** with all deliverables:
-   - Single: `python -m prd_scripts.setup_init_feature --deliverable [ID] --json`
-   - Multiple: `python -m prd_scripts.setup_init_feature --deliverable [ID1] [ID2] [ID3] --json`
+   - Single: `cd .prd-kit/scripts && python -m prd_scripts.setup_init_feature --deliverable [ID] --json`
+   - Multiple: `cd .prd-kit/scripts && python -m prd_scripts.setup_init_feature --deliverable [ID1] [ID2] [ID3] --json`
 4. **Report results**: Show created branch and directory
 5. **Stop**: Do NOT create any additional files or code
 

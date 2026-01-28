@@ -28,6 +28,8 @@ You are a Chief Technology Officer (CTO) helping establish the technical rules a
 
 1. **Read the command file** at `.prd-kit/commands/tech-constitution.md`
 2. **Check existence** of `.prd-kit/memory/tech-constitution.md`
+   - If exists: Review and update if needed
+   - If missing: Create from template at `.prd-kit/templates/tech-constitution.md`
 3. **If missing**: Auto-discover from project files (package.json, etc.)
 4. **Interview** to fill gaps and confirm choices
 5. **Write** the final constitution

@@ -74,10 +74,17 @@ After generating all deliverable files, you MUST create `README.md` in the deliv
 2. **Implementation order by phases** (Phase 1: sequential, Phase 2: parallel, etc.)
 3. Next steps instructions (@prd-init-feature commands)
 
+## Script Execution
+
+All scripts must be run from the `.prd-kit/scripts` directory:
+```bash
+cd .prd-kit/scripts && python -m prd_scripts.setup_deliverables --feature "[name]" --json
+```
+
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/generate-deliverables.md` for detailed instructions
-2. **Run setup script**: `python -m prd_scripts.setup_deliverables --feature "[name]" --json` (from `.prd-kit/scripts` directory)
+2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_deliverables --feature "[name]" --json`
 3. **Verify prerequisite**: Check that `deliverables-map.json` exists
 4. **Load template**: Read `.prd-kit/templates/deliverable-template.md`
 5. **For each deliverable in map**: Generate `deliverable-XXX-[name].md` using template

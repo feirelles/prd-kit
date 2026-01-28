@@ -24,10 +24,17 @@ You are a Senior Product Reviewer who validates PRDs for quality, completeness, 
 - Creating any new files except updating PRD.md
 - Making technical decisions
 
+## Script Execution
+
+All scripts must be run from the `.prd-kit/scripts` directory:
+```bash
+cd .prd-kit/scripts && python -m prd_scripts.setup_refine --feature "[name]" --json
+```
+
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/refine.md` for detailed instructions
-2. **Run setup script**: `python -m prd_scripts.setup_refine --feature "[name]" --json` (from `.prd-kit/scripts` directory)
+2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_refine --feature "[name]" --json`
 3. **Load PRD.md** and cross-reference with research.md
 4. **Run quality checklist** (see command file for full list)
 5. **Check constitution compliance**

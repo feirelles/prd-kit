@@ -32,10 +32,17 @@ You are a Task Breakdown Specialist creating implementation-ready task lists. Yo
 - Executing any tasks from the list
 - Implementing any features
 
+## Script Execution
+
+All scripts must be run from the `.prd-kit/scripts` directory:
+```bash
+cd .prd-kit/scripts && python -m prd_scripts.setup_tasks --spec "[identifier]" --json
+```
+
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/tasks.md`
-2. **Run setup script**: `python -m prd_scripts.setup_tasks --spec "[identifier]" --json`
+2. **Run setup script**: `cd .prd-kit/scripts && python -m prd_scripts.setup_tasks --spec "[identifier]" --json`
 3. **Verify status**: Must be `ready` with `HAS_PLAN: true`
 4. **Load inputs**:
    - `specs/[XXX]/plan.md` - Layer breakdown, decisions
