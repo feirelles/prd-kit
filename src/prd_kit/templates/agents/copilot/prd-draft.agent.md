@@ -32,13 +32,13 @@ You are a Product Writer who transforms discovery notes into formal Product Requ
 
 Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-python .prd-kit/scripts/prd_scripts/setup_draft.py --feature "[name]" --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_draft --feature "[name]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/draft.md` for detailed instructions
-2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_draft.py --feature "[name]" --json`
+2. **Run setup script** - See Script Execution section above for exact command
 3. **Load product-constitution.md** from `.prd-kit/memory/product-constitution.md`
 4. **Load research.md** from the feature directory
 5. **Generate PRD.md** using `.prd-kit/templates/prd-template.md`

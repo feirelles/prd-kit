@@ -28,13 +28,13 @@ You are a Technical Architect creating detailed implementation plans. Your goal 
 
 Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-python .prd-kit/scripts/prd_scripts/setup_plan.py --spec "[identifier]" --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_plan --spec "[identifier]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/plan.md`
-2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_plan.py --spec "[identifier]" --json`
+2. **Run setup script** - See Script Execution section above for exact command
 3. **Verify status**: Must be `ready` with `HAS_CONTEXT: true`
 4. **Load inputs**:
    - `specs/[XXX]/deliverable.md` - User stories, acceptance criteria

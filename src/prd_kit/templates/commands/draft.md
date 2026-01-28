@@ -33,7 +33,7 @@ Synthesize the research notes (`research.md`) into a structured PRD draft (`PRD.
 
 1. **Setup**: Run setup script to get file paths:
    ```bash
-   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_draft --feature "feature-name" --json
+   cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_draft --feature "feature-name" --json
    ```
 
 2. **Load Inputs**:

@@ -36,13 +36,13 @@ You are a Task Breakdown Specialist creating implementation-ready task lists. Yo
 
 Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-python .prd-kit/scripts/prd_scripts/setup_tasks.py --spec "[identifier]" --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_tasks --spec "[identifier]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/tasks.md`
-2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_tasks.py --spec "[identifier]" --json`
+2. **Run setup script** - See Script Execution section above for exact command
 3. **Verify status**: Must be `ready` with `HAS_PLAN: true`
 4. **Load inputs**:
    - `specs/[XXX]/plan.md` - Layer breakdown, decisions

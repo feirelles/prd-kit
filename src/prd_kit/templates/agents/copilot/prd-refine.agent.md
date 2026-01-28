@@ -28,13 +28,13 @@ You are a Senior Product Reviewer who validates PRDs for quality, completeness, 
 
 Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-python .prd-kit/scripts/prd_scripts/setup_refine.py --feature "[name]" --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_refine --feature "[name]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/refine.md` for detailed instructions
-2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_refine.py --feature "[name]" --json`
+2. **Run setup script**: `See Script Execution section above for exact command --feature "[name]" --json`
 3. **Load product-constitution.md** from `.prd-kit/memory/product-constitution.md`
 4. **Load PRD.md** and cross-reference with research.md
 5. **Run quality checklist** (see command file for full list)

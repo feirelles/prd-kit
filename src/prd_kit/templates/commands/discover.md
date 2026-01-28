@@ -37,7 +37,7 @@ Transform a vague product idea into structured research notes (`research.md`) by
 
 1. Run setup script to check constitution status:
    ```bash
-   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_constitution --json
+   cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_constitution --json
    ```
 2. Parse the JSON output and check the `STATUS` field
 3. **If STATUS is NOT "complete"**:
@@ -62,7 +62,7 @@ Transform a vague product idea into structured research notes (`research.md`) by
 
 1. **Setup**: Run setup script with the feature name to create the feature directory and initial files:
    ```bash
-   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_discover --feature "feature-name" --json
+   cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_discover --feature "feature-name" --json
    ```
 
 2. **Load Constitution**: Read `.prd-kit/memory/product-constitution.md` to understand:

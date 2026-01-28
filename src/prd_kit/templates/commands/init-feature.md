@@ -55,12 +55,12 @@ Initialize the technical phase for a deliverable: create a feature branch and sp
    
    Single deliverable:
    ```bash
-   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_init_feature --deliverable [ID] --json
+   cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_init_feature --deliverable [ID] --json
    ```
    
    Multiple deliverables (creates ONE branch/directory for all):
    ```bash
-   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_init_feature --deliverable [ID1] [ID2] [ID3] --json
+   cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_init_feature --deliverable [ID1] [ID2] [ID3] --json
    ```
    
    The script will:

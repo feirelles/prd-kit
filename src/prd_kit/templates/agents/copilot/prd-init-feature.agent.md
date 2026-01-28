@@ -27,22 +27,19 @@ You are a Feature Initialization Specialist. Your job is to create the infrastru
 
 ## Script Execution
 
-Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
 # Single deliverable
-python .prd-kit/scripts/prd_scripts/setup_init_feature.py --deliverable [ID] --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_init_feature --deliverable [ID] --json
 
 # Multiple deliverables
-python .prd-kit/scripts/prd_scripts/setup_init_feature.py --deliverable [ID1] [ID2] [ID3] --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_init_feature --deliverable [ID1] [ID2] [ID3] --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/init-feature.md`
 2. **Identify deliverables**: User provides one or more deliverable IDs, names, or paths
-3. **Run setup script** with all deliverables:
-   - Single: `python .prd-kit/scripts/prd_scripts/setup_init_feature.py --deliverable [ID] --json`
-   - Multiple: `python .prd-kit/scripts/prd_scripts/setup_init_feature.py --deliverable [ID1] [ID2] [ID3] --json`
+3. **Run setup script** - See Script Execution section above for exact command
 4. **Report results**: Show created branch and directory
 5. **Stop**: Do NOT create any additional files or code
 

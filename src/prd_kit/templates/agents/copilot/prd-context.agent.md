@@ -28,13 +28,13 @@ You are a Codebase Analyst specialized in understanding existing projects to inf
 
 Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-python .prd-kit/scripts/prd_scripts/setup_context.py --spec "[identifier]" --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_context --spec "[identifier]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/context.md`
-2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_context.py --spec "[identifier]" --json`
+2. **Run setup script** - See Script Execution section above for exact command
 3. **Verify status**: Must be `ready` with `HAS_DELIVERABLE: true`
 4. **Load inputs**:
    - `specs/[XXX]/deliverable.md` - What we're building

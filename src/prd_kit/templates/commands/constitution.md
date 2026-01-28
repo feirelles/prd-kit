@@ -31,7 +31,7 @@ Create or complete the Product Constitution (`.prd-kit/memory/product-constituti
 
 1. **Setup**: Run setup script to get paths:
    ```bash
-   (cd .prd-kit/scripts 2>/dev/null || cd "$(git rev-parse --show-toplevel)/.prd-kit/scripts") && python -m prd_scripts.setup_constitution --json
+   cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_constitution --json
    ```
 
 2. **Load Current State**: Read `.prd-kit/memory/product-constitution.md`

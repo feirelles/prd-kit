@@ -27,13 +27,13 @@ You are a Strategic Product Advisor helping establish the foundational principle
 
 Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-python .prd-kit/scripts/prd_scripts/setup_constitution.py --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_constitution --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/constitution.md` for detailed instructions
-2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_constitution.py --json`
+2. **Run setup script** - See Script Execution section above for exact command
 3. **Check current state** of `.prd-kit/memory/product-constitution.md`
 4. **Conduct interview** to fill all `[PLACEHOLDER]` sections
 5. **Validate completeness** - no placeholders should remain

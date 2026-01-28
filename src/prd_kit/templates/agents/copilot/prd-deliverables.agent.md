@@ -78,13 +78,13 @@ After generating all deliverable files, you MUST create `README.md` in the deliv
 
 Run from project root (scripts auto-detect `.prd-kit` directory):
 ```bash
-python .prd-kit/scripts/prd_scripts/setup_deliverables.py --feature "[name]" --json
+cd "$(git rev-parse --show-toplevel 2>/dev/null || echo "ERROR: Run from git repository root")/.prd-kit/scripts" && python -m prd_scripts.setup_deliverables --feature "[name]" --json
 ```
 
 ## Workflow
 
 1. **Read the command file** at `.prd-kit/commands/generate-deliverables.md` for detailed instructions
-2. **Run setup script**: `python .prd-kit/scripts/prd_scripts/setup_deliverables.py --feature "[name]" --json`
+2. **Run setup script** - See Script Execution section above for exact command
 3. **Verify prerequisite**: Check that `deliverables-map.json` exists
 4. **Load PRD.md** and `product-constitution.md` for context
 5. **Load template**: Read `.prd-kit/templates/deliverable-template.md`
