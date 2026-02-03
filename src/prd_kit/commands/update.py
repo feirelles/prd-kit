@@ -35,6 +35,8 @@ def update_command(
             ai = "copilot"
         elif (target / "CLAUDE.md").exists():
             ai = "claude"
+        elif (target / ".agent" / "workflows").exists():
+            ai = "antigravity"
         else:
             ai = "copilot"  # default
 
@@ -145,6 +147,21 @@ def _update_files(target: Path, ai: str) -> None:
                 target / ".github" / "agents" / "prd-implement.agent.md"
             ),
         })
+    elif ai == "antigravity":
+        files_to_update.update({
+            "agents/antigravity/prd-constitution.md": target / ".agent" / "workflows" / "prd-constitution.md",
+            "agents/antigravity/prd-discover.md": target / ".agent" / "workflows" / "prd-discover.md",
+            "agents/antigravity/prd-draft.md": target / ".agent" / "workflows" / "prd-draft.md",
+            "agents/antigravity/prd-refine.md": target / ".agent" / "workflows" / "prd-refine.md",
+            "agents/antigravity/prd-decompose.md": target / ".agent" / "workflows" / "prd-decompose.md",
+            "agents/antigravity/prd-deliverables.md": target / ".agent" / "workflows" / "prd-deliverables.md",
+            "agents/antigravity/prd-tech-constitution.md": target / ".agent" / "workflows" / "prd-tech-constitution.md",
+            "agents/antigravity/prd-init-feature.md": target / ".agent" / "workflows" / "prd-init-feature.md",
+            "agents/antigravity/prd-context.md": target / ".agent" / "workflows" / "prd-context.md",
+            "agents/antigravity/prd-plan.md": target / ".agent" / "workflows" / "prd-plan.md",
+            "agents/antigravity/prd-tasks.md": target / ".agent" / "workflows" / "prd-tasks.md",
+            "agents/antigravity/prd-implement.md": target / ".agent" / "workflows" / "prd-implement.md",
+        })
 
     # Cleanup: Remove obsolete files
     cleaned_count = 0
@@ -159,6 +176,8 @@ def _update_files(target: Path, ai: str) -> None:
     
     if ai == "copilot":
         dirs_to_scan.append(target / ".github" / "agents")
+    elif ai == "antigravity":
+        dirs_to_scan.append(target / ".agent" / "workflows")
     
     # Create set of expected paths for fast lookup
     expected_paths = set(files_to_update.values())

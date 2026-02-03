@@ -41,7 +41,7 @@ def init_command(
     console.print(PRD_KIT_BANNER)
 
     # Validate AI option
-    supported_ai = ["copilot", "claude"]
+    supported_ai = ["copilot", "claude", "antigravity"]
     if ai not in supported_ai:
         console.print(f"[red]Error:[/red] Unsupported AI agent: {ai}")
         console.print(f"Supported agents: {', '.join(supported_ai)}")
@@ -105,6 +105,8 @@ def _create_directory_structure(target: Path, ai: str) -> None:
         dirs_to_create.append(target / ".github" / "agents")
     elif ai == "claude":
         dirs_to_create.append(target / ".claude" / "commands")
+    elif ai == "antigravity":
+        dirs_to_create.append(target / ".agent" / "workflows")
 
     for dir_path in dirs_to_create:
         dir_path.mkdir(parents=True, exist_ok=True)
@@ -213,6 +215,20 @@ def _copy_templates(target: Path, ai: str) -> None:
         "claude": {
             "agents/claude/CLAUDE.md": target / "CLAUDE.md",
         },
+        "antigravity": {
+            "agents/antigravity/prd-constitution.md": target / ".agent" / "workflows" / "prd-constitution.md",
+            "agents/antigravity/prd-discover.md": target / ".agent" / "workflows" / "prd-discover.md",
+            "agents/antigravity/prd-draft.md": target / ".agent" / "workflows" / "prd-draft.md",
+            "agents/antigravity/prd-refine.md": target / ".agent" / "workflows" / "prd-refine.md",
+            "agents/antigravity/prd-decompose.md": target / ".agent" / "workflows" / "prd-decompose.md",
+            "agents/antigravity/prd-deliverables.md": target / ".agent" / "workflows" / "prd-deliverables.md",
+            "agents/antigravity/prd-tech-constitution.md": target / ".agent" / "workflows" / "prd-tech-constitution.md",
+            "agents/antigravity/prd-init-feature.md": target / ".agent" / "workflows" / "prd-init-feature.md",
+            "agents/antigravity/prd-context.md": target / ".agent" / "workflows" / "prd-context.md",
+            "agents/antigravity/prd-plan.md": target / ".agent" / "workflows" / "prd-plan.md",
+            "agents/antigravity/prd-tasks.md": target / ".agent" / "workflows" / "prd-tasks.md",
+            "agents/antigravity/prd-implement.md": target / ".agent" / "workflows" / "prd-implement.md",
+        },
     }
 
     # Copy all template files
@@ -233,11 +249,7 @@ def _copy_templates(target: Path, ai: str) -> None:
             dest_path.write_text(f"# TODO: Template content for {src_name}\n")
             console.print(f"  Created placeholder: [yellow]{dest_path.relative_to(target)}[/yellow]")
 
-    # Create AGENTS.md
-    agents_md = target / "AGENTS.md"
-    agents_content = _generate_agents_md(ai)
-    agents_md.write_text(agents_content)
-    console.print(f"  Created: [dim]AGENTS.md[/dim]")
+
 
     # Create .gitkeep in prds/
     (target / "prds" / ".gitkeep").touch()
@@ -245,67 +257,60 @@ def _copy_templates(target: Path, ai: str) -> None:
     # Create README.md
     readme = target / "README.md"
     if not readme.exists():
-        readme.write_text(_generate_readme())
+        readme.write_text(_generate_readme(ai))
         console.print(f"  Created: [dim]README.md[/dim]")
 
 
-def _generate_agents_md(ai: str) -> str:
-    """Generate AGENTS.md content."""
-    return f"""# PRD Kit Agents
 
-This project uses PRD Kit for Product Requirements Document generation.
+def _generate_readme(ai: str) -> str:
+    """Generate README.md content."""
+    
+    agents_section = ""
+    if ai == "antigravity":
+        agents_section = """
+## Antigravity Workflows
 
+Use slash commands to invoke workflows:
+
+| Workflow | Description |
+|----------|-------------|
+| `/prd-constitution` | Set up product principles |
+| `/prd-discover` | Discovery phase |
+| `/prd-draft` | Generate PRD draft |
+| `/prd-refine` | Refine PRD |
+| `/prd-decompose` | Decompose PRD |
+| `/prd-deliverables` | Generate deliverables |
+| `/prd-init-feature` | Initialize feature |
+| `/prd-context` | Analyze context |
+| `/prd-plan` | Technical planning |
+| `/prd-tasks` | Generate tasks |
+| `/prd-implement` | Implementation |
+| `/prd-tech-constitution` | Technical constitution |
+"""
+    else:
+        agents_section = """
 ## Available Agents
 
 | Agent | Description |
 |-------|-------------|
-| `@prd-constitution` | Set up product principles, personas, and constraints (run first!) |
-| `@prd-discover` | Start discovery phase - interview to understand the product idea |
-| `@prd-draft` | Generate PRD draft from research notes |
-| `@prd-refine` | Refine and validate PRD against constitution |
-| `@prd-decompose` | Decompose PRD into technical deliverables |
-| `@prd-deliverables` | Generate deliverable files for Spec Kit |
-
-## Workflow
-
-1. **Constitution**: `@prd-constitution` - Define product principles (one-time setup)
-2. **Discovery**: `@prd-discover` - Describe your product idea
-3. **Draft**: `@prd-draft` - Generate initial PRD
-4. **Refine**: `@prd-refine` - Validate and improve PRD
-5. **Decompose**: `@prd-decompose` - Break into deliverables
-6. **Generate**: `@prd-deliverables` - Create deliverable files
-
-## Configuration
-
-- AI Agent: **{ai}**
-- Constitution: `.prd-kit/memory/product-constitution.md`
-- Templates: `.prd-kit/templates/`
-- Commands: `.prd-kit/commands/`
-
-## Handoff to Spec Kit
-
-After generating deliverables, use each `deliverable-XXX.md` file to initialize
-a spec in Spec Kit:
-
-```bash
-specify init specs/[deliverable-name]
-# When asked "What should I build?", provide the deliverable file content
-```
+| `@prd-constitution` | Set up product principles (run first!) |
+| `@prd-discover` | Start discovery phase |
+| `@prd-draft` | Generate PRD draft |
+| `@prd-refine` | Refine and validate PRD |
+| `@prd-decompose` | Decompose PRD |
+| `@prd-deliverables` | Generate deliverable files |
 """
 
-
-def _generate_readme() -> str:
-    """Generate README.md content."""
-    return """# PRD Kit Project
+    return f"""# PRD Kit Project
 
 This project uses [PRD Kit](https://github.com/feirelles/prd-kit) for Product Requirements Document generation with AI agents.
 
 ## Getting Started
 
 1. Edit `.prd-kit/memory/product-constitution.md` with your product principles
-2. Start a new PRD by invoking `@prd-discover` in your AI assistant
+2. Start a new PRD by invoking `{"/prd-discover" if ai == "antigravity" else "@prd-discover"}` in your AI assistant
 3. Follow the workflow: Discover → Draft → Refine → Decompose → Deliverables
-
+{agents_section}
 ## Directory Structure
 
 ```
@@ -325,11 +330,11 @@ prds/
     └── deliverables/
         ├── deliverables-map.json
         └── deliverable-XXX.md    # Technical deliverables
+
+For Antigravity users:
+.agent/
+└── workflows/            # Workflow definitions
 ```
-
-## Documentation
-
-See [AGENTS.md](AGENTS.md) for available AI agents and workflow details.
 """
 
 
