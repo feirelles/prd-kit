@@ -1,6 +1,6 @@
 ---
 description: 'Generate implementation tasks organized by technical layer'
-tools: ['codebase', 'search', 'readFile', 'runInTerminal', 'editFiles', 'createFile']
+tools: ['codebase', 'search', 'readFile', 'runInTerminal', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Implement with Checkpoints
     agent: prd-implement

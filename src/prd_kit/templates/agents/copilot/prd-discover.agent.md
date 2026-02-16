@@ -1,6 +1,6 @@
 ---
 description: 'Start PRD discovery - interview to understand your product idea and create research notes'
-tools: ['codebase', 'readFile', 'runInTerminal', 'fetch', 'editFiles', 'createFile']
+tools: ['codebase', 'readFile', 'runInTerminal', 'fetch', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Create Product Constitution
     agent: prd-constitution

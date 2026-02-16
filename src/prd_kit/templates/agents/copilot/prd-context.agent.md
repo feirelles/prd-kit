@@ -1,6 +1,6 @@
 ---
 description: 'Analyze project codebase to discover patterns, stack, and reusable components'
-tools: ['codebase', 'search', 'readFile', 'usages', 'runInTerminal', 'editFiles', 'createFile']
+tools: ['codebase', 'search', 'readFile', 'usages', 'runInTerminal', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Generate Technical Plan
     agent: prd-plan

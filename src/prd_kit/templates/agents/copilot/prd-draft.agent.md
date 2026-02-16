@@ -1,6 +1,6 @@
 ---
 description: 'Generate a PRD draft from research notes'
-tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile']
+tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Refine PRD
     agent: prd-refine

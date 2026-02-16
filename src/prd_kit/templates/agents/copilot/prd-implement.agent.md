@@ -1,6 +1,6 @@
 ---
 description: 'Execute implementation tasks from tasks.md following the technical plan'
-tools: ['codebase', 'search', 'readFile', 'usages', 'editFiles', 'createFile', 'runInTerminal', 'problems', 'testFailure']
+tools: ['codebase', 'search', 'readFile', 'usages', 'editFiles', 'createFile', 'runInTerminal', 'problems', 'testFailure', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Adjust Plan
     agent: prd-plan

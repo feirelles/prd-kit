@@ -1,14 +1,18 @@
 ---
 description: 'Generate deliverable files from the decomposition map for Spec Kit handoff'
-tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile']
+tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Start New Feature
     agent: prd-discover
     prompt: Start discovery for another feature
     send: false
-  - label: Initialize Feature
+  - label: Initialize Deliverable
     agent: prd-init-feature
     prompt: Initialize deliverable [ID] for implementation
+    send: false
+  - label: Initialize Feature
+    agent: prd-init-feature
+    prompt: Initialize all deliverables for implementation on the same branch
     send: false
 ---
 

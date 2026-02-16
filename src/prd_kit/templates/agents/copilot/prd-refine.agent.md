@@ -1,6 +1,6 @@
 ---
 description: 'Refine and validate the PRD draft against quality criteria'
-tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles']
+tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Decompose into Deliverables
     agent: prd-decompose

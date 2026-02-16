@@ -1,6 +1,6 @@
 ---
 description: 'Create or update your product constitution - define principles, personas, and constraints'
-tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile']
+tools: ['codebase', 'readFile', 'runInTerminal', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Start Feature Discovery
     agent: prd-discover

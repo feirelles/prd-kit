@@ -1,6 +1,6 @@
 ---
 description: 'Initialize or update technical stack and coding rules - run before Phase 2'
-tools: ['codebase', 'readFile', 'search', 'runInTerminal', 'editFiles', 'createFile']
+tools: ['codebase', 'readFile', 'search', 'runInTerminal', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Initialize Feature
     agent: prd-init-feature

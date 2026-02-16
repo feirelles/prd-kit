@@ -1,6 +1,6 @@
 ---
 description: 'Generate technical plan with architecture decisions for a feature'
-tools: ['codebase', 'search', 'readFile', 'usages', 'runInTerminal', 'editFiles', 'createFile']
+tools: ['codebase', 'search', 'readFile', 'usages', 'runInTerminal', 'editFiles', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Generate Implementation Tasks
     agent: prd-tasks

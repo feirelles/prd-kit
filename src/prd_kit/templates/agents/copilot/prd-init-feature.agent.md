@@ -1,6 +1,6 @@
 ---
 description: 'Initialize feature branch and spec directory from a deliverable'
-tools: ['runInTerminal', 'readFile']
+tools: ['runInTerminal', 'readFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Analyze Project Context
     agent: prd-context

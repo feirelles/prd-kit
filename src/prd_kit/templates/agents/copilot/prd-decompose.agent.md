@@ -1,6 +1,6 @@
 ---
 description: 'Decompose an approved PRD into technical deliverables - creates deliverables-map.json ONLY'
-tools: ['codebase', 'readFile', 'runInTerminal', 'createFile']
+tools: ['codebase', 'readFile', 'runInTerminal', 'createFile', 'context7/*', 'pocketbase/*']
 handoffs:
   - label: Generate Deliverable Files
     agent: prd-deliverables
